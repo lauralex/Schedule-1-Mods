@@ -1,0 +1,1415 @@
+using System;
+using Il2CppInterop.Common.Attributes;
+using Il2CppInterop.Runtime;
+using Il2CppInterop.Runtime.Runtime;
+using Il2CppScheduleOne.DevUtilities;
+using Il2CppScheduleOne.ItemFramework;
+using Il2CppSystem;
+using Il2CppSystem.Collections;
+using Il2CppSystem.Collections.Generic;
+using Il2CppTMPro;
+using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.UI;
+
+namespace Il2CppScheduleOne.UI.Items
+{
+	// Token: 0x0200074E RID: 1870
+	public class ItemUIManager : Singleton<ItemUIManager>
+	{
+		// Token: 0x0600A9B5 RID: 43445 RVA: 0x002B74AC File Offset: 0x002B56AC
+		// Note: this type is marked as 'beforefieldinit'.
+		static ItemUIManager()
+		{
+			Il2CppClassPointerStore<ItemUIManager>.NativeClassPtr = IL2CPP.GetIl2CppClass("Assembly-CSharp.dll", "ScheduleOne.UI.Items", "ItemUIManager");
+			IL2CPP.il2cpp_runtime_class_init(Il2CppClassPointerStore<ItemUIManager>.NativeClassPtr);
+			ItemUIManager.NativeFieldInfoPtr__DraggingEnabled_k__BackingField = IL2CPP.GetIl2CppField(Il2CppClassPointerStore<ItemUIManager>.NativeClassPtr, "<DraggingEnabled>k__BackingField");
+			ItemUIManager.NativeFieldInfoPtr__HoveredSlot_k__BackingField = IL2CPP.GetIl2CppField(Il2CppClassPointerStore<ItemUIManager>.NativeClassPtr, "<HoveredSlot>k__BackingField");
+			ItemUIManager.NativeFieldInfoPtr__QuickMoveEnabled_k__BackingField = IL2CPP.GetIl2CppField(Il2CppClassPointerStore<ItemUIManager>.NativeClassPtr, "<QuickMoveEnabled>k__BackingField");
+			ItemUIManager.NativeFieldInfoPtr_Canvas = IL2CPP.GetIl2CppField(Il2CppClassPointerStore<ItemUIManager>.NativeClassPtr, "Canvas");
+			ItemUIManager.NativeFieldInfoPtr_CashDragAmountContainer = IL2CPP.GetIl2CppField(Il2CppClassPointerStore<ItemUIManager>.NativeClassPtr, "CashDragAmountContainer");
+			ItemUIManager.NativeFieldInfoPtr_InputsContainer = IL2CPP.GetIl2CppField(Il2CppClassPointerStore<ItemUIManager>.NativeClassPtr, "InputsContainer");
+			ItemUIManager.NativeFieldInfoPtr_InfoPanel = IL2CPP.GetIl2CppField(Il2CppClassPointerStore<ItemUIManager>.NativeClassPtr, "InfoPanel");
+			ItemUIManager.NativeFieldInfoPtr_ItemQuantityPrompt = IL2CPP.GetIl2CppField(Il2CppClassPointerStore<ItemUIManager>.NativeClassPtr, "ItemQuantityPrompt");
+			ItemUIManager.NativeFieldInfoPtr_CashSlotHintAnim = IL2CPP.GetIl2CppField(Il2CppClassPointerStore<ItemUIManager>.NativeClassPtr, "CashSlotHintAnim");
+			ItemUIManager.NativeFieldInfoPtr_CashSlotHintAnimCanvasGroup = IL2CPP.GetIl2CppField(Il2CppClassPointerStore<ItemUIManager>.NativeClassPtr, "CashSlotHintAnimCanvasGroup");
+			ItemUIManager.NativeFieldInfoPtr_FilterConfigPanel = IL2CPP.GetIl2CppField(Il2CppClassPointerStore<ItemUIManager>.NativeClassPtr, "FilterConfigPanel");
+			ItemUIManager.NativeFieldInfoPtr_ItemSlotUIPrefab = IL2CPP.GetIl2CppField(Il2CppClassPointerStore<ItemUIManager>.NativeClassPtr, "ItemSlotUIPrefab");
+			ItemUIManager.NativeFieldInfoPtr_DefaultItemUIPrefab = IL2CPP.GetIl2CppField(Il2CppClassPointerStore<ItemUIManager>.NativeClassPtr, "DefaultItemUIPrefab");
+			ItemUIManager.NativeFieldInfoPtr_HotbarSlotUIPrefab = IL2CPP.GetIl2CppField(Il2CppClassPointerStore<ItemUIManager>.NativeClassPtr, "HotbarSlotUIPrefab");
+			ItemUIManager.NativeFieldInfoPtr_draggedSlot = IL2CPP.GetIl2CppField(Il2CppClassPointerStore<ItemUIManager>.NativeClassPtr, "draggedSlot");
+			ItemUIManager.NativeFieldInfoPtr_mouseOffset = IL2CPP.GetIl2CppField(Il2CppClassPointerStore<ItemUIManager>.NativeClassPtr, "mouseOffset");
+			ItemUIManager.NativeFieldInfoPtr_draggedAmount = IL2CPP.GetIl2CppField(Il2CppClassPointerStore<ItemUIManager>.NativeClassPtr, "draggedAmount");
+			ItemUIManager.NativeFieldInfoPtr_tempIcon = IL2CPP.GetIl2CppField(Il2CppClassPointerStore<ItemUIManager>.NativeClassPtr, "tempIcon");
+			ItemUIManager.NativeFieldInfoPtr__raycasters = IL2CPP.GetIl2CppField(Il2CppClassPointerStore<ItemUIManager>.NativeClassPtr, "_raycasters");
+			ItemUIManager.NativeFieldInfoPtr_isDraggingCash = IL2CPP.GetIl2CppField(Il2CppClassPointerStore<ItemUIManager>.NativeClassPtr, "isDraggingCash");
+			ItemUIManager.NativeFieldInfoPtr_draggedCashAmount = IL2CPP.GetIl2CppField(Il2CppClassPointerStore<ItemUIManager>.NativeClassPtr, "draggedCashAmount");
+			ItemUIManager.NativeFieldInfoPtr_PrimarySlots = IL2CPP.GetIl2CppField(Il2CppClassPointerStore<ItemUIManager>.NativeClassPtr, "PrimarySlots");
+			ItemUIManager.NativeFieldInfoPtr_SecondarySlots = IL2CPP.GetIl2CppField(Il2CppClassPointerStore<ItemUIManager>.NativeClassPtr, "SecondarySlots");
+			ItemUIManager.NativeFieldInfoPtr_customDragAmount = IL2CPP.GetIl2CppField(Il2CppClassPointerStore<ItemUIManager>.NativeClassPtr, "customDragAmount");
+			ItemUIManager.NativeFieldInfoPtr_quantityChangePopRoutine = IL2CPP.GetIl2CppField(Il2CppClassPointerStore<ItemUIManager>.NativeClassPtr, "quantityChangePopRoutine");
+			ItemUIManager.NativeFieldInfoPtr_onDragStart = IL2CPP.GetIl2CppField(Il2CppClassPointerStore<ItemUIManager>.NativeClassPtr, "onDragStart");
+			ItemUIManager.NativeFieldInfoPtr_onItemMoved = IL2CPP.GetIl2CppField(Il2CppClassPointerStore<ItemUIManager>.NativeClassPtr, "onItemMoved");
+			ItemUIManager.NativeMethodInfoPtr_get_DraggingEnabled_Public_get_Boolean_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<ItemUIManager>.NativeClassPtr, 100684798);
+			ItemUIManager.NativeMethodInfoPtr_set_DraggingEnabled_Protected_set_Void_Boolean_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<ItemUIManager>.NativeClassPtr, 100684799);
+			ItemUIManager.NativeMethodInfoPtr_get_HoveredSlot_Public_get_ItemSlotUI_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<ItemUIManager>.NativeClassPtr, 100684800);
+			ItemUIManager.NativeMethodInfoPtr_set_HoveredSlot_Protected_set_Void_ItemSlotUI_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<ItemUIManager>.NativeClassPtr, 100684801);
+			ItemUIManager.NativeMethodInfoPtr_get_QuickMoveEnabled_Public_get_Boolean_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<ItemUIManager>.NativeClassPtr, 100684802);
+			ItemUIManager.NativeMethodInfoPtr_set_QuickMoveEnabled_Protected_set_Void_Boolean_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<ItemUIManager>.NativeClassPtr, 100684803);
+			ItemUIManager.NativeMethodInfoPtr_Awake_Protected_Virtual_Void_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<ItemUIManager>.NativeClassPtr, 100684804);
+			ItemUIManager.NativeMethodInfoPtr_Update_Protected_Virtual_New_Void_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<ItemUIManager>.NativeClassPtr, 100684805);
+			ItemUIManager.NativeMethodInfoPtr_AddRaycaster_Public_Void_GraphicRaycaster_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<ItemUIManager>.NativeClassPtr, 100684806);
+			ItemUIManager.NativeMethodInfoPtr_LateUpdate_Protected_Virtual_New_Void_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<ItemUIManager>.NativeClassPtr, 100684807);
+			ItemUIManager.NativeMethodInfoPtr_UpdateCashDragSelectorUI_Private_Void_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<ItemUIManager>.NativeClassPtr, 100684808);
+			ItemUIManager.NativeMethodInfoPtr_UpdateCashDragAmount_Private_Void_CashInstance_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<ItemUIManager>.NativeClassPtr, 100684809);
+			ItemUIManager.NativeMethodInfoPtr_SetDraggingEnabled_Public_Void_Boolean_Boolean_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<ItemUIManager>.NativeClassPtr, 100684810);
+			ItemUIManager.NativeMethodInfoPtr_EnableQuickMove_Public_Void_List_1_ItemSlot_List_1_ItemSlot_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<ItemUIManager>.NativeClassPtr, 100684811);
+			ItemUIManager.NativeMethodInfoPtr_GetQuickMoveSlots_Private_List_1_ItemSlot_ItemSlot_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<ItemUIManager>.NativeClassPtr, 100684812);
+			ItemUIManager.NativeMethodInfoPtr_DisableQuickMove_Public_Void_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<ItemUIManager>.NativeClassPtr, 100684813);
+			ItemUIManager.NativeMethodInfoPtr_GetHoveredItemSlot_Private_ItemSlotUI_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<ItemUIManager>.NativeClassPtr, 100684814);
+			ItemUIManager.NativeMethodInfoPtr_GetHoveredItemInfo_Private_ItemDefinitionInfoHoverable_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<ItemUIManager>.NativeClassPtr, 100684815);
+			ItemUIManager.NativeMethodInfoPtr_SlotClicked_Private_Void_ItemSlotUI_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<ItemUIManager>.NativeClassPtr, 100684816);
+			ItemUIManager.NativeMethodInfoPtr_StartDragCash_Private_Void_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<ItemUIManager>.NativeClassPtr, 100684817);
+			ItemUIManager.NativeMethodInfoPtr_EndDrag_Private_Void_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<ItemUIManager>.NativeClassPtr, 100684818);
+			ItemUIManager.NativeMethodInfoPtr_SetDraggedAmount_Private_Void_Int32_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<ItemUIManager>.NativeClassPtr, 100684819);
+			ItemUIManager.NativeMethodInfoPtr_EndCashDrag_Private_Void_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<ItemUIManager>.NativeClassPtr, 100684820);
+			ItemUIManager.NativeMethodInfoPtr_CanDragFromSlot_Public_Boolean_ItemSlotUI_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<ItemUIManager>.NativeClassPtr, 100684821);
+			ItemUIManager.NativeMethodInfoPtr_CanCashBeDraggedIntoSlot_Public_Boolean_ItemSlotUI_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<ItemUIManager>.NativeClassPtr, 100684822);
+			ItemUIManager.NativeMethodInfoPtr__ctor_Public_Void_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<ItemUIManager>.NativeClassPtr, 100684823);
+		}
+
+		// Token: 0x170033A2 RID: 13218
+		// (get) Token: 0x0600A9B6 RID: 43446 RVA: 0x002B7900 File Offset: 0x002B5B00
+		// (set) Token: 0x0600A9B7 RID: 43447 RVA: 0x002B793C File Offset: 0x002B5B3C
+		public unsafe bool DraggingEnabled
+		{
+			[CallerCount(0)]
+			get
+			{
+				IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+				IntPtr* ptr = null;
+				IntPtr intPtr2;
+				IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(ItemUIManager.NativeMethodInfoPtr_get_DraggingEnabled_Public_get_Boolean_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)ptr, ref intPtr2);
+				Il2CppException.RaiseExceptionIfNecessary(intPtr2);
+				return *IL2CPP.il2cpp_object_unbox(intPtr);
+			}
+			[CallerCount(19)]
+			[CachedScanResults(RefRangeStart = 35726, RefRangeEnd = 35745, XrefRangeStart = 35726, XrefRangeEnd = 35745, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+			set
+			{
+				IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+				checked
+				{
+					IntPtr* ptr = stackalloc IntPtr[unchecked((UIntPtr)1) * (UIntPtr)sizeof(IntPtr)];
+					*ptr = ref value;
+					IntPtr intPtr2;
+					IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(ItemUIManager.NativeMethodInfoPtr_set_DraggingEnabled_Protected_set_Void_Boolean_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)ptr, ref intPtr2);
+					Il2CppException.RaiseExceptionIfNecessary(intPtr2);
+				}
+			}
+		}
+
+		// Token: 0x170033A3 RID: 13219
+		// (get) Token: 0x0600A9B8 RID: 43448 RVA: 0x002B797C File Offset: 0x002B5B7C
+		// (set) Token: 0x0600A9B9 RID: 43449 RVA: 0x002B79BC File Offset: 0x002B5BBC
+		public unsafe ItemSlotUI HoveredSlot
+		{
+			[CallerCount(14)]
+			[CachedScanResults(RefRangeStart = 21088, RefRangeEnd = 21102, XrefRangeStart = 21088, XrefRangeEnd = 21102, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+			get
+			{
+				IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+				IntPtr* ptr = null;
+				IntPtr intPtr2;
+				IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(ItemUIManager.NativeMethodInfoPtr_get_HoveredSlot_Public_get_ItemSlotUI_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)ptr, ref intPtr2);
+				Il2CppException.RaiseExceptionIfNecessary(intPtr2);
+				IntPtr intPtr3 = intPtr;
+				return (intPtr3 != 0) ? Il2CppObjectPool.Get<ItemSlotUI>(intPtr3) : null;
+			}
+			[CallerCount(0)]
+			[CachedScanResults(RefRangeStart = 0, RefRangeEnd = 0, XrefRangeStart = 0, XrefRangeEnd = 0, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+			set
+			{
+				IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+				checked
+				{
+					IntPtr* ptr = stackalloc IntPtr[unchecked((UIntPtr)1) * (UIntPtr)sizeof(IntPtr)];
+					*ptr = IL2CPP.Il2CppObjectBaseToPtr(value);
+					IntPtr intPtr2;
+					IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(ItemUIManager.NativeMethodInfoPtr_set_HoveredSlot_Protected_set_Void_ItemSlotUI_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)ptr, ref intPtr2);
+					Il2CppException.RaiseExceptionIfNecessary(intPtr2);
+				}
+			}
+		}
+
+		// Token: 0x170033A4 RID: 13220
+		// (get) Token: 0x0600A9BA RID: 43450 RVA: 0x002B7A00 File Offset: 0x002B5C00
+		// (set) Token: 0x0600A9BB RID: 43451 RVA: 0x002B7A3C File Offset: 0x002B5C3C
+		public unsafe bool QuickMoveEnabled
+		{
+			[CallerCount(0)]
+			get
+			{
+				IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+				IntPtr* ptr = null;
+				IntPtr intPtr2;
+				IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(ItemUIManager.NativeMethodInfoPtr_get_QuickMoveEnabled_Public_get_Boolean_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)ptr, ref intPtr2);
+				Il2CppException.RaiseExceptionIfNecessary(intPtr2);
+				return *IL2CPP.il2cpp_object_unbox(intPtr);
+			}
+			[CallerCount(0)]
+			set
+			{
+				IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+				checked
+				{
+					IntPtr* ptr = stackalloc IntPtr[unchecked((UIntPtr)1) * (UIntPtr)sizeof(IntPtr)];
+					*ptr = ref value;
+					IntPtr intPtr2;
+					IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(ItemUIManager.NativeMethodInfoPtr_set_QuickMoveEnabled_Protected_set_Void_Boolean_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)ptr, ref intPtr2);
+					Il2CppException.RaiseExceptionIfNecessary(intPtr2);
+				}
+			}
+		}
+
+		// Token: 0x0600A9BC RID: 43452 RVA: 0x002B7A7C File Offset: 0x002B5C7C
+		[CallerCount(0)]
+		[CachedScanResults(RefRangeStart = 0, RefRangeEnd = 0, XrefRangeStart = 295246, XrefRangeEnd = 295254, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+		public unsafe override void Awake()
+		{
+			IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+			IntPtr* ptr = null;
+			IntPtr intPtr2;
+			IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(IL2CPP.il2cpp_object_get_virtual_method(IL2CPP.Il2CppObjectBaseToPtr(this), ItemUIManager.NativeMethodInfoPtr_Awake_Protected_Virtual_Void_0), IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)ptr, ref intPtr2);
+			Il2CppException.RaiseExceptionIfNecessary(intPtr2);
+		}
+
+		// Token: 0x0600A9BD RID: 43453 RVA: 0x002B7AB8 File Offset: 0x002B5CB8
+		[CallerCount(0)]
+		[CachedScanResults(RefRangeStart = 0, RefRangeEnd = 0, XrefRangeStart = 295254, XrefRangeEnd = 295327, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+		public unsafe virtual void Update()
+		{
+			IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+			IntPtr* ptr = null;
+			IntPtr intPtr2;
+			IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(IL2CPP.il2cpp_object_get_virtual_method(IL2CPP.Il2CppObjectBaseToPtr(this), ItemUIManager.NativeMethodInfoPtr_Update_Protected_Virtual_New_Void_0), IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)ptr, ref intPtr2);
+			Il2CppException.RaiseExceptionIfNecessary(intPtr2);
+		}
+
+		// Token: 0x0600A9BE RID: 43454 RVA: 0x002B7AF4 File Offset: 0x002B5CF4
+		[CallerCount(14)]
+		[CachedScanResults(RefRangeStart = 295337, RefRangeEnd = 295351, XrefRangeStart = 295327, XrefRangeEnd = 295337, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+		public unsafe void AddRaycaster(GraphicRaycaster raycaster)
+		{
+			IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+			checked
+			{
+				IntPtr* ptr = stackalloc IntPtr[unchecked((UIntPtr)1) * (UIntPtr)sizeof(IntPtr)];
+				*ptr = IL2CPP.Il2CppObjectBaseToPtr(raycaster);
+				IntPtr intPtr2;
+				IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(ItemUIManager.NativeMethodInfoPtr_AddRaycaster_Public_Void_GraphicRaycaster_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)ptr, ref intPtr2);
+				Il2CppException.RaiseExceptionIfNecessary(intPtr2);
+			}
+		}
+
+		// Token: 0x0600A9BF RID: 43455 RVA: 0x002B7B38 File Offset: 0x002B5D38
+		[CallerCount(0)]
+		[CachedScanResults(RefRangeStart = 0, RefRangeEnd = 0, XrefRangeStart = 295351, XrefRangeEnd = 295363, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+		public unsafe virtual void LateUpdate()
+		{
+			IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+			IntPtr* ptr = null;
+			IntPtr intPtr2;
+			IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(IL2CPP.il2cpp_object_get_virtual_method(IL2CPP.Il2CppObjectBaseToPtr(this), ItemUIManager.NativeMethodInfoPtr_LateUpdate_Protected_Virtual_New_Void_0), IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)ptr, ref intPtr2);
+			Il2CppException.RaiseExceptionIfNecessary(intPtr2);
+		}
+
+		// Token: 0x0600A9C0 RID: 43456 RVA: 0x002B7B74 File Offset: 0x002B5D74
+		[CallerCount(1)]
+		[CachedScanResults(RefRangeStart = 295384, RefRangeEnd = 295385, XrefRangeStart = 295363, XrefRangeEnd = 295384, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+		public unsafe void UpdateCashDragSelectorUI()
+		{
+			IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+			IntPtr* ptr = null;
+			IntPtr intPtr2;
+			IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(ItemUIManager.NativeMethodInfoPtr_UpdateCashDragSelectorUI_Private_Void_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)ptr, ref intPtr2);
+			Il2CppException.RaiseExceptionIfNecessary(intPtr2);
+		}
+
+		// Token: 0x0600A9C1 RID: 43457 RVA: 0x002B7BA8 File Offset: 0x002B5DA8
+		[CallerCount(0)]
+		[CachedScanResults(RefRangeStart = 0, RefRangeEnd = 0, XrefRangeStart = 295385, XrefRangeEnd = 295412, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+		public unsafe void UpdateCashDragAmount(CashInstance instance)
+		{
+			IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+			checked
+			{
+				IntPtr* ptr = stackalloc IntPtr[unchecked((UIntPtr)1) * (UIntPtr)sizeof(IntPtr)];
+				*ptr = IL2CPP.Il2CppObjectBaseToPtr(instance);
+				IntPtr intPtr2;
+				IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(ItemUIManager.NativeMethodInfoPtr_UpdateCashDragAmount_Private_Void_CashInstance_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)ptr, ref intPtr2);
+				Il2CppException.RaiseExceptionIfNecessary(intPtr2);
+			}
+		}
+
+		// Token: 0x0600A9C2 RID: 43458 RVA: 0x002B7BEC File Offset: 0x002B5DEC
+		[CallerCount(24)]
+		[CachedScanResults(RefRangeStart = 295428, RefRangeEnd = 295452, XrefRangeStart = 295412, XrefRangeEnd = 295428, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+		public unsafe void SetDraggingEnabled(bool enabled, bool modifierPromptsVisible = true)
+		{
+			IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+			IntPtr* ptr;
+			checked
+			{
+				ptr = stackalloc IntPtr[unchecked((UIntPtr)2) * (UIntPtr)sizeof(IntPtr)];
+				*ptr = ref enabled;
+			}
+			ptr[checked(unchecked((UIntPtr)1) * (UIntPtr)sizeof(IntPtr)) / (UIntPtr)sizeof(IntPtr)] = ref modifierPromptsVisible;
+			IntPtr intPtr2;
+			IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(ItemUIManager.NativeMethodInfoPtr_SetDraggingEnabled_Public_Void_Boolean_Boolean_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)ptr, ref intPtr2);
+			Il2CppException.RaiseExceptionIfNecessary(intPtr2);
+		}
+
+		// Token: 0x0600A9C3 RID: 43459 RVA: 0x002B7C38 File Offset: 0x002B5E38
+		[CallerCount(14)]
+		[CachedScanResults(RefRangeStart = 295472, RefRangeEnd = 295486, XrefRangeStart = 295452, XrefRangeEnd = 295472, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+		public unsafe void EnableQuickMove(List<ItemSlot> primarySlots, List<ItemSlot> secondarySlots)
+		{
+			IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+			IntPtr* ptr;
+			checked
+			{
+				ptr = stackalloc IntPtr[unchecked((UIntPtr)2) * (UIntPtr)sizeof(IntPtr)];
+				*ptr = IL2CPP.Il2CppObjectBaseToPtr(primarySlots);
+			}
+			ptr[checked(unchecked((UIntPtr)1) * (UIntPtr)sizeof(IntPtr)) / (UIntPtr)sizeof(IntPtr)] = IL2CPP.Il2CppObjectBaseToPtr(secondarySlots);
+			IntPtr intPtr2;
+			IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(ItemUIManager.NativeMethodInfoPtr_EnableQuickMove_Public_Void_List_1_ItemSlot_List_1_ItemSlot_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)ptr, ref intPtr2);
+			Il2CppException.RaiseExceptionIfNecessary(intPtr2);
+		}
+
+		// Token: 0x0600A9C4 RID: 43460 RVA: 0x002B7C8C File Offset: 0x002B5E8C
+		[CallerCount(2)]
+		[CachedScanResults(RefRangeStart = 295519, RefRangeEnd = 295521, XrefRangeStart = 295486, XrefRangeEnd = 295519, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+		public unsafe List<ItemSlot> GetQuickMoveSlots(ItemSlot sourceSlot)
+		{
+			IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+			checked
+			{
+				IntPtr* ptr = stackalloc IntPtr[unchecked((UIntPtr)1) * (UIntPtr)sizeof(IntPtr)];
+				*ptr = IL2CPP.Il2CppObjectBaseToPtr(sourceSlot);
+				IntPtr intPtr2;
+				IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(ItemUIManager.NativeMethodInfoPtr_GetQuickMoveSlots_Private_List_1_ItemSlot_ItemSlot_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)ptr, ref intPtr2);
+				Il2CppException.RaiseExceptionIfNecessary(intPtr2);
+				IntPtr intPtr3 = intPtr;
+				return (intPtr3 != 0) ? Il2CppObjectPool.Get<List<ItemSlot>>(intPtr3) : null;
+			}
+		}
+
+		// Token: 0x0600A9C5 RID: 43461 RVA: 0x002B7CDC File Offset: 0x002B5EDC
+		[CallerCount(1)]
+		[CachedScanResults(RefRangeStart = 295521, RefRangeEnd = 295522, XrefRangeStart = 295521, XrefRangeEnd = 295521, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+		public unsafe void DisableQuickMove()
+		{
+			IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+			IntPtr* ptr = null;
+			IntPtr intPtr2;
+			IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(ItemUIManager.NativeMethodInfoPtr_DisableQuickMove_Public_Void_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)ptr, ref intPtr2);
+			Il2CppException.RaiseExceptionIfNecessary(intPtr2);
+		}
+
+		// Token: 0x0600A9C6 RID: 43462 RVA: 0x002B7D10 File Offset: 0x002B5F10
+		[CallerCount(1)]
+		[CachedScanResults(RefRangeStart = 295574, RefRangeEnd = 295575, XrefRangeStart = 295522, XrefRangeEnd = 295574, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+		public unsafe ItemSlotUI GetHoveredItemSlot()
+		{
+			IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+			IntPtr* ptr = null;
+			IntPtr intPtr2;
+			IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(ItemUIManager.NativeMethodInfoPtr_GetHoveredItemSlot_Private_ItemSlotUI_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)ptr, ref intPtr2);
+			Il2CppException.RaiseExceptionIfNecessary(intPtr2);
+			IntPtr intPtr3 = intPtr;
+			return (intPtr3 != 0) ? Il2CppObjectPool.Get<ItemSlotUI>(intPtr3) : null;
+		}
+
+		// Token: 0x0600A9C7 RID: 43463 RVA: 0x002B7D50 File Offset: 0x002B5F50
+		[CallerCount(1)]
+		[CachedScanResults(RefRangeStart = 295615, RefRangeEnd = 295616, XrefRangeStart = 295575, XrefRangeEnd = 295615, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+		public unsafe ItemDefinitionInfoHoverable GetHoveredItemInfo()
+		{
+			IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+			IntPtr* ptr = null;
+			IntPtr intPtr2;
+			IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(ItemUIManager.NativeMethodInfoPtr_GetHoveredItemInfo_Private_ItemDefinitionInfoHoverable_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)ptr, ref intPtr2);
+			Il2CppException.RaiseExceptionIfNecessary(intPtr2);
+			IntPtr intPtr3 = intPtr;
+			return (intPtr3 != 0) ? Il2CppObjectPool.Get<ItemDefinitionInfoHoverable>(intPtr3) : null;
+		}
+
+		// Token: 0x0600A9C8 RID: 43464 RVA: 0x002B7D90 File Offset: 0x002B5F90
+		[CallerCount(1)]
+		[CachedScanResults(RefRangeStart = 295661, RefRangeEnd = 295662, XrefRangeStart = 295616, XrefRangeEnd = 295661, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+		public unsafe void SlotClicked(ItemSlotUI ui)
+		{
+			IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+			checked
+			{
+				IntPtr* ptr = stackalloc IntPtr[unchecked((UIntPtr)1) * (UIntPtr)sizeof(IntPtr)];
+				*ptr = IL2CPP.Il2CppObjectBaseToPtr(ui);
+				IntPtr intPtr2;
+				IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(ItemUIManager.NativeMethodInfoPtr_SlotClicked_Private_Void_ItemSlotUI_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)ptr, ref intPtr2);
+				Il2CppException.RaiseExceptionIfNecessary(intPtr2);
+			}
+		}
+
+		// Token: 0x0600A9C9 RID: 43465 RVA: 0x002B7DD4 File Offset: 0x002B5FD4
+		[CallerCount(0)]
+		[CachedScanResults(RefRangeStart = 0, RefRangeEnd = 0, XrefRangeStart = 295662, XrefRangeEnd = 295709, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+		public unsafe void StartDragCash()
+		{
+			IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+			IntPtr* ptr = null;
+			IntPtr intPtr2;
+			IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(ItemUIManager.NativeMethodInfoPtr_StartDragCash_Private_Void_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)ptr, ref intPtr2);
+			Il2CppException.RaiseExceptionIfNecessary(intPtr2);
+		}
+
+		// Token: 0x0600A9CA RID: 43466 RVA: 0x002B7E08 File Offset: 0x002B6008
+		[CallerCount(2)]
+		[CachedScanResults(RefRangeStart = 295751, RefRangeEnd = 295753, XrefRangeStart = 295709, XrefRangeEnd = 295751, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+		public unsafe void EndDrag()
+		{
+			IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+			IntPtr* ptr = null;
+			IntPtr intPtr2;
+			IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(ItemUIManager.NativeMethodInfoPtr_EndDrag_Private_Void_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)ptr, ref intPtr2);
+			Il2CppException.RaiseExceptionIfNecessary(intPtr2);
+		}
+
+		// Token: 0x0600A9CB RID: 43467 RVA: 0x002B7E3C File Offset: 0x002B603C
+		[CallerCount(1)]
+		[CachedScanResults(RefRangeStart = 295794, RefRangeEnd = 295795, XrefRangeStart = 295753, XrefRangeEnd = 295794, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+		public unsafe void SetDraggedAmount(int amount)
+		{
+			IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+			checked
+			{
+				IntPtr* ptr = stackalloc IntPtr[unchecked((UIntPtr)1) * (UIntPtr)sizeof(IntPtr)];
+				*ptr = ref amount;
+				IntPtr intPtr2;
+				IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(ItemUIManager.NativeMethodInfoPtr_SetDraggedAmount_Private_Void_Int32_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)ptr, ref intPtr2);
+				Il2CppException.RaiseExceptionIfNecessary(intPtr2);
+			}
+		}
+
+		// Token: 0x0600A9CC RID: 43468 RVA: 0x002B7E7C File Offset: 0x002B607C
+		[CallerCount(1)]
+		[CachedScanResults(RefRangeStart = 295855, RefRangeEnd = 295856, XrefRangeStart = 295795, XrefRangeEnd = 295855, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+		public unsafe void EndCashDrag()
+		{
+			IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+			IntPtr* ptr = null;
+			IntPtr intPtr2;
+			IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(ItemUIManager.NativeMethodInfoPtr_EndCashDrag_Private_Void_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)ptr, ref intPtr2);
+			Il2CppException.RaiseExceptionIfNecessary(intPtr2);
+		}
+
+		// Token: 0x0600A9CD RID: 43469 RVA: 0x002B7EB0 File Offset: 0x002B60B0
+		[CallerCount(1)]
+		[CachedScanResults(RefRangeStart = 295860, RefRangeEnd = 295861, XrefRangeStart = 295856, XrefRangeEnd = 295860, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+		public unsafe bool CanDragFromSlot(ItemSlotUI slotUI)
+		{
+			IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+			checked
+			{
+				IntPtr* ptr = stackalloc IntPtr[unchecked((UIntPtr)1) * (UIntPtr)sizeof(IntPtr)];
+				*ptr = IL2CPP.Il2CppObjectBaseToPtr(slotUI);
+				IntPtr intPtr2;
+				IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(ItemUIManager.NativeMethodInfoPtr_CanDragFromSlot_Public_Boolean_ItemSlotUI_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)ptr, ref intPtr2);
+				Il2CppException.RaiseExceptionIfNecessary(intPtr2);
+				return *IL2CPP.il2cpp_object_unbox(intPtr);
+			}
+		}
+
+		// Token: 0x0600A9CE RID: 43470 RVA: 0x002B7F00 File Offset: 0x002B6100
+		[CallerCount(0)]
+		[CachedScanResults(RefRangeStart = 0, RefRangeEnd = 0, XrefRangeStart = 295861, XrefRangeEnd = 295867, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+		public unsafe bool CanCashBeDraggedIntoSlot(ItemSlotUI ui)
+		{
+			IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+			checked
+			{
+				IntPtr* ptr = stackalloc IntPtr[unchecked((UIntPtr)1) * (UIntPtr)sizeof(IntPtr)];
+				*ptr = IL2CPP.Il2CppObjectBaseToPtr(ui);
+				IntPtr intPtr2;
+				IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(ItemUIManager.NativeMethodInfoPtr_CanCashBeDraggedIntoSlot_Public_Boolean_ItemSlotUI_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)ptr, ref intPtr2);
+				Il2CppException.RaiseExceptionIfNecessary(intPtr2);
+				return *IL2CPP.il2cpp_object_unbox(intPtr);
+			}
+		}
+
+		// Token: 0x0600A9CF RID: 43471 RVA: 0x002B7F50 File Offset: 0x002B6150
+		[CallerCount(0)]
+		[CachedScanResults(RefRangeStart = 0, RefRangeEnd = 0, XrefRangeStart = 295867, XrefRangeEnd = 295891, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+		public unsafe ItemUIManager()
+			: this(IL2CPP.il2cpp_object_new(Il2CppClassPointerStore<ItemUIManager>.NativeClassPtr))
+		{
+			IntPtr* ptr = null;
+			IntPtr intPtr2;
+			IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(ItemUIManager.NativeMethodInfoPtr__ctor_Public_Void_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)ptr, ref intPtr2);
+			Il2CppException.RaiseExceptionIfNecessary(intPtr2);
+		}
+
+		// Token: 0x0600A9D0 RID: 43472 RVA: 0x00050BA4 File Offset: 0x0004EDA4
+		public ItemUIManager(IntPtr pointer)
+			: base(pointer)
+		{
+		}
+
+		// Token: 0x17003387 RID: 13191
+		// (get) Token: 0x0600A9D1 RID: 43473 RVA: 0x002B7F8C File Offset: 0x002B618C
+		// (set) Token: 0x0600A9D2 RID: 43474 RVA: 0x00050BAD File Offset: 0x0004EDAD
+		public unsafe bool _DraggingEnabled_k__BackingField
+		{
+			get
+			{
+				IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this) + (IntPtr)IL2CPP.il2cpp_field_get_offset(ItemUIManager.NativeFieldInfoPtr__DraggingEnabled_k__BackingField);
+				return *intPtr;
+			}
+			set
+			{
+				*(IL2CPP.Il2CppObjectBaseToPtrNotNull(this) + (IntPtr)IL2CPP.il2cpp_field_get_offset(ItemUIManager.NativeFieldInfoPtr__DraggingEnabled_k__BackingField)) = value;
+			}
+		}
+
+		// Token: 0x17003388 RID: 13192
+		// (get) Token: 0x0600A9D3 RID: 43475 RVA: 0x002B7FB4 File Offset: 0x002B61B4
+		// (set) Token: 0x0600A9D4 RID: 43476 RVA: 0x00050BC8 File Offset: 0x0004EDC8
+		public unsafe ItemSlotUI _HoveredSlot_k__BackingField
+		{
+			get
+			{
+				IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this) + (IntPtr)IL2CPP.il2cpp_field_get_offset(ItemUIManager.NativeFieldInfoPtr__HoveredSlot_k__BackingField);
+				IntPtr intPtr2 = *intPtr;
+				return (intPtr2 != 0) ? Il2CppObjectPool.Get<ItemSlotUI>(intPtr2) : null;
+			}
+			set
+			{
+				IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+				IL2CPP.il2cpp_gc_wbarrier_set_field(intPtr, intPtr + (IntPtr)IL2CPP.il2cpp_field_get_offset(ItemUIManager.NativeFieldInfoPtr__HoveredSlot_k__BackingField), IL2CPP.Il2CppObjectBaseToPtr(value));
+			}
+		}
+
+		// Token: 0x17003389 RID: 13193
+		// (get) Token: 0x0600A9D5 RID: 43477 RVA: 0x002B7FE4 File Offset: 0x002B61E4
+		// (set) Token: 0x0600A9D6 RID: 43478 RVA: 0x00050BE7 File Offset: 0x0004EDE7
+		public unsafe bool _QuickMoveEnabled_k__BackingField
+		{
+			get
+			{
+				IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this) + (IntPtr)IL2CPP.il2cpp_field_get_offset(ItemUIManager.NativeFieldInfoPtr__QuickMoveEnabled_k__BackingField);
+				return *intPtr;
+			}
+			set
+			{
+				*(IL2CPP.Il2CppObjectBaseToPtrNotNull(this) + (IntPtr)IL2CPP.il2cpp_field_get_offset(ItemUIManager.NativeFieldInfoPtr__QuickMoveEnabled_k__BackingField)) = value;
+			}
+		}
+
+		// Token: 0x1700338A RID: 13194
+		// (get) Token: 0x0600A9D7 RID: 43479 RVA: 0x002B800C File Offset: 0x002B620C
+		// (set) Token: 0x0600A9D8 RID: 43480 RVA: 0x00050C02 File Offset: 0x0004EE02
+		public unsafe Canvas Canvas
+		{
+			get
+			{
+				IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this) + (IntPtr)IL2CPP.il2cpp_field_get_offset(ItemUIManager.NativeFieldInfoPtr_Canvas);
+				IntPtr intPtr2 = *intPtr;
+				return (intPtr2 != 0) ? Il2CppObjectPool.Get<Canvas>(intPtr2) : null;
+			}
+			set
+			{
+				IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+				IL2CPP.il2cpp_gc_wbarrier_set_field(intPtr, intPtr + (IntPtr)IL2CPP.il2cpp_field_get_offset(ItemUIManager.NativeFieldInfoPtr_Canvas), IL2CPP.Il2CppObjectBaseToPtr(value));
+			}
+		}
+
+		// Token: 0x1700338B RID: 13195
+		// (get) Token: 0x0600A9D9 RID: 43481 RVA: 0x002B803C File Offset: 0x002B623C
+		// (set) Token: 0x0600A9DA RID: 43482 RVA: 0x00050C21 File Offset: 0x0004EE21
+		public unsafe RectTransform CashDragAmountContainer
+		{
+			get
+			{
+				IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this) + (IntPtr)IL2CPP.il2cpp_field_get_offset(ItemUIManager.NativeFieldInfoPtr_CashDragAmountContainer);
+				IntPtr intPtr2 = *intPtr;
+				return (intPtr2 != 0) ? Il2CppObjectPool.Get<RectTransform>(intPtr2) : null;
+			}
+			set
+			{
+				IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+				IL2CPP.il2cpp_gc_wbarrier_set_field(intPtr, intPtr + (IntPtr)IL2CPP.il2cpp_field_get_offset(ItemUIManager.NativeFieldInfoPtr_CashDragAmountContainer), IL2CPP.Il2CppObjectBaseToPtr(value));
+			}
+		}
+
+		// Token: 0x1700338C RID: 13196
+		// (get) Token: 0x0600A9DB RID: 43483 RVA: 0x002B806C File Offset: 0x002B626C
+		// (set) Token: 0x0600A9DC RID: 43484 RVA: 0x00050C40 File Offset: 0x0004EE40
+		public unsafe RectTransform InputsContainer
+		{
+			get
+			{
+				IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this) + (IntPtr)IL2CPP.il2cpp_field_get_offset(ItemUIManager.NativeFieldInfoPtr_InputsContainer);
+				IntPtr intPtr2 = *intPtr;
+				return (intPtr2 != 0) ? Il2CppObjectPool.Get<RectTransform>(intPtr2) : null;
+			}
+			set
+			{
+				IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+				IL2CPP.il2cpp_gc_wbarrier_set_field(intPtr, intPtr + (IntPtr)IL2CPP.il2cpp_field_get_offset(ItemUIManager.NativeFieldInfoPtr_InputsContainer), IL2CPP.Il2CppObjectBaseToPtr(value));
+			}
+		}
+
+		// Token: 0x1700338D RID: 13197
+		// (get) Token: 0x0600A9DD RID: 43485 RVA: 0x002B809C File Offset: 0x002B629C
+		// (set) Token: 0x0600A9DE RID: 43486 RVA: 0x00050C5F File Offset: 0x0004EE5F
+		public unsafe ItemInfoPanel InfoPanel
+		{
+			get
+			{
+				IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this) + (IntPtr)IL2CPP.il2cpp_field_get_offset(ItemUIManager.NativeFieldInfoPtr_InfoPanel);
+				IntPtr intPtr2 = *intPtr;
+				return (intPtr2 != 0) ? Il2CppObjectPool.Get<ItemInfoPanel>(intPtr2) : null;
+			}
+			set
+			{
+				IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+				IL2CPP.il2cpp_gc_wbarrier_set_field(intPtr, intPtr + (IntPtr)IL2CPP.il2cpp_field_get_offset(ItemUIManager.NativeFieldInfoPtr_InfoPanel), IL2CPP.Il2CppObjectBaseToPtr(value));
+			}
+		}
+
+		// Token: 0x1700338E RID: 13198
+		// (get) Token: 0x0600A9DF RID: 43487 RVA: 0x002B80CC File Offset: 0x002B62CC
+		// (set) Token: 0x0600A9E0 RID: 43488 RVA: 0x00050C7E File Offset: 0x0004EE7E
+		public unsafe RectTransform ItemQuantityPrompt
+		{
+			get
+			{
+				IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this) + (IntPtr)IL2CPP.il2cpp_field_get_offset(ItemUIManager.NativeFieldInfoPtr_ItemQuantityPrompt);
+				IntPtr intPtr2 = *intPtr;
+				return (intPtr2 != 0) ? Il2CppObjectPool.Get<RectTransform>(intPtr2) : null;
+			}
+			set
+			{
+				IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+				IL2CPP.il2cpp_gc_wbarrier_set_field(intPtr, intPtr + (IntPtr)IL2CPP.il2cpp_field_get_offset(ItemUIManager.NativeFieldInfoPtr_ItemQuantityPrompt), IL2CPP.Il2CppObjectBaseToPtr(value));
+			}
+		}
+
+		// Token: 0x1700338F RID: 13199
+		// (get) Token: 0x0600A9E1 RID: 43489 RVA: 0x002B80FC File Offset: 0x002B62FC
+		// (set) Token: 0x0600A9E2 RID: 43490 RVA: 0x00050C9D File Offset: 0x0004EE9D
+		public unsafe Animation CashSlotHintAnim
+		{
+			get
+			{
+				IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this) + (IntPtr)IL2CPP.il2cpp_field_get_offset(ItemUIManager.NativeFieldInfoPtr_CashSlotHintAnim);
+				IntPtr intPtr2 = *intPtr;
+				return (intPtr2 != 0) ? Il2CppObjectPool.Get<Animation>(intPtr2) : null;
+			}
+			set
+			{
+				IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+				IL2CPP.il2cpp_gc_wbarrier_set_field(intPtr, intPtr + (IntPtr)IL2CPP.il2cpp_field_get_offset(ItemUIManager.NativeFieldInfoPtr_CashSlotHintAnim), IL2CPP.Il2CppObjectBaseToPtr(value));
+			}
+		}
+
+		// Token: 0x17003390 RID: 13200
+		// (get) Token: 0x0600A9E3 RID: 43491 RVA: 0x002B812C File Offset: 0x002B632C
+		// (set) Token: 0x0600A9E4 RID: 43492 RVA: 0x00050CBC File Offset: 0x0004EEBC
+		public unsafe CanvasGroup CashSlotHintAnimCanvasGroup
+		{
+			get
+			{
+				IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this) + (IntPtr)IL2CPP.il2cpp_field_get_offset(ItemUIManager.NativeFieldInfoPtr_CashSlotHintAnimCanvasGroup);
+				IntPtr intPtr2 = *intPtr;
+				return (intPtr2 != 0) ? Il2CppObjectPool.Get<CanvasGroup>(intPtr2) : null;
+			}
+			set
+			{
+				IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+				IL2CPP.il2cpp_gc_wbarrier_set_field(intPtr, intPtr + (IntPtr)IL2CPP.il2cpp_field_get_offset(ItemUIManager.NativeFieldInfoPtr_CashSlotHintAnimCanvasGroup), IL2CPP.Il2CppObjectBaseToPtr(value));
+			}
+		}
+
+		// Token: 0x17003391 RID: 13201
+		// (get) Token: 0x0600A9E5 RID: 43493 RVA: 0x002B815C File Offset: 0x002B635C
+		// (set) Token: 0x0600A9E6 RID: 43494 RVA: 0x00050CDB File Offset: 0x0004EEDB
+		public unsafe FilterConfigPanel FilterConfigPanel
+		{
+			get
+			{
+				IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this) + (IntPtr)IL2CPP.il2cpp_field_get_offset(ItemUIManager.NativeFieldInfoPtr_FilterConfigPanel);
+				IntPtr intPtr2 = *intPtr;
+				return (intPtr2 != 0) ? Il2CppObjectPool.Get<FilterConfigPanel>(intPtr2) : null;
+			}
+			set
+			{
+				IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+				IL2CPP.il2cpp_gc_wbarrier_set_field(intPtr, intPtr + (IntPtr)IL2CPP.il2cpp_field_get_offset(ItemUIManager.NativeFieldInfoPtr_FilterConfigPanel), IL2CPP.Il2CppObjectBaseToPtr(value));
+			}
+		}
+
+		// Token: 0x17003392 RID: 13202
+		// (get) Token: 0x0600A9E7 RID: 43495 RVA: 0x002B818C File Offset: 0x002B638C
+		// (set) Token: 0x0600A9E8 RID: 43496 RVA: 0x00050CFA File Offset: 0x0004EEFA
+		public unsafe ItemSlotUI ItemSlotUIPrefab
+		{
+			get
+			{
+				IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this) + (IntPtr)IL2CPP.il2cpp_field_get_offset(ItemUIManager.NativeFieldInfoPtr_ItemSlotUIPrefab);
+				IntPtr intPtr2 = *intPtr;
+				return (intPtr2 != 0) ? Il2CppObjectPool.Get<ItemSlotUI>(intPtr2) : null;
+			}
+			set
+			{
+				IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+				IL2CPP.il2cpp_gc_wbarrier_set_field(intPtr, intPtr + (IntPtr)IL2CPP.il2cpp_field_get_offset(ItemUIManager.NativeFieldInfoPtr_ItemSlotUIPrefab), IL2CPP.Il2CppObjectBaseToPtr(value));
+			}
+		}
+
+		// Token: 0x17003393 RID: 13203
+		// (get) Token: 0x0600A9E9 RID: 43497 RVA: 0x002B81BC File Offset: 0x002B63BC
+		// (set) Token: 0x0600A9EA RID: 43498 RVA: 0x00050D19 File Offset: 0x0004EF19
+		public unsafe ItemUI DefaultItemUIPrefab
+		{
+			get
+			{
+				IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this) + (IntPtr)IL2CPP.il2cpp_field_get_offset(ItemUIManager.NativeFieldInfoPtr_DefaultItemUIPrefab);
+				IntPtr intPtr2 = *intPtr;
+				return (intPtr2 != 0) ? Il2CppObjectPool.Get<ItemUI>(intPtr2) : null;
+			}
+			set
+			{
+				IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+				IL2CPP.il2cpp_gc_wbarrier_set_field(intPtr, intPtr + (IntPtr)IL2CPP.il2cpp_field_get_offset(ItemUIManager.NativeFieldInfoPtr_DefaultItemUIPrefab), IL2CPP.Il2CppObjectBaseToPtr(value));
+			}
+		}
+
+		// Token: 0x17003394 RID: 13204
+		// (get) Token: 0x0600A9EB RID: 43499 RVA: 0x002B81EC File Offset: 0x002B63EC
+		// (set) Token: 0x0600A9EC RID: 43500 RVA: 0x00050D38 File Offset: 0x0004EF38
+		public unsafe ItemSlotUI HotbarSlotUIPrefab
+		{
+			get
+			{
+				IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this) + (IntPtr)IL2CPP.il2cpp_field_get_offset(ItemUIManager.NativeFieldInfoPtr_HotbarSlotUIPrefab);
+				IntPtr intPtr2 = *intPtr;
+				return (intPtr2 != 0) ? Il2CppObjectPool.Get<ItemSlotUI>(intPtr2) : null;
+			}
+			set
+			{
+				IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+				IL2CPP.il2cpp_gc_wbarrier_set_field(intPtr, intPtr + (IntPtr)IL2CPP.il2cpp_field_get_offset(ItemUIManager.NativeFieldInfoPtr_HotbarSlotUIPrefab), IL2CPP.Il2CppObjectBaseToPtr(value));
+			}
+		}
+
+		// Token: 0x17003395 RID: 13205
+		// (get) Token: 0x0600A9ED RID: 43501 RVA: 0x002B821C File Offset: 0x002B641C
+		// (set) Token: 0x0600A9EE RID: 43502 RVA: 0x00050D57 File Offset: 0x0004EF57
+		public unsafe ItemSlotUI draggedSlot
+		{
+			get
+			{
+				IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this) + (IntPtr)IL2CPP.il2cpp_field_get_offset(ItemUIManager.NativeFieldInfoPtr_draggedSlot);
+				IntPtr intPtr2 = *intPtr;
+				return (intPtr2 != 0) ? Il2CppObjectPool.Get<ItemSlotUI>(intPtr2) : null;
+			}
+			set
+			{
+				IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+				IL2CPP.il2cpp_gc_wbarrier_set_field(intPtr, intPtr + (IntPtr)IL2CPP.il2cpp_field_get_offset(ItemUIManager.NativeFieldInfoPtr_draggedSlot), IL2CPP.Il2CppObjectBaseToPtr(value));
+			}
+		}
+
+		// Token: 0x17003396 RID: 13206
+		// (get) Token: 0x0600A9EF RID: 43503 RVA: 0x002B824C File Offset: 0x002B644C
+		// (set) Token: 0x0600A9F0 RID: 43504 RVA: 0x00050D76 File Offset: 0x0004EF76
+		public unsafe Vector2 mouseOffset
+		{
+			get
+			{
+				IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this) + (IntPtr)IL2CPP.il2cpp_field_get_offset(ItemUIManager.NativeFieldInfoPtr_mouseOffset);
+				return *intPtr;
+			}
+			set
+			{
+				*(IL2CPP.Il2CppObjectBaseToPtrNotNull(this) + (IntPtr)IL2CPP.il2cpp_field_get_offset(ItemUIManager.NativeFieldInfoPtr_mouseOffset)) = value;
+			}
+		}
+
+		// Token: 0x17003397 RID: 13207
+		// (get) Token: 0x0600A9F1 RID: 43505 RVA: 0x002B8274 File Offset: 0x002B6474
+		// (set) Token: 0x0600A9F2 RID: 43506 RVA: 0x00050D91 File Offset: 0x0004EF91
+		public unsafe int draggedAmount
+		{
+			get
+			{
+				IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this) + (IntPtr)IL2CPP.il2cpp_field_get_offset(ItemUIManager.NativeFieldInfoPtr_draggedAmount);
+				return *intPtr;
+			}
+			set
+			{
+				*(IL2CPP.Il2CppObjectBaseToPtrNotNull(this) + (IntPtr)IL2CPP.il2cpp_field_get_offset(ItemUIManager.NativeFieldInfoPtr_draggedAmount)) = value;
+			}
+		}
+
+		// Token: 0x17003398 RID: 13208
+		// (get) Token: 0x0600A9F3 RID: 43507 RVA: 0x002B829C File Offset: 0x002B649C
+		// (set) Token: 0x0600A9F4 RID: 43508 RVA: 0x00050DAC File Offset: 0x0004EFAC
+		public unsafe RectTransform tempIcon
+		{
+			get
+			{
+				IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this) + (IntPtr)IL2CPP.il2cpp_field_get_offset(ItemUIManager.NativeFieldInfoPtr_tempIcon);
+				IntPtr intPtr2 = *intPtr;
+				return (intPtr2 != 0) ? Il2CppObjectPool.Get<RectTransform>(intPtr2) : null;
+			}
+			set
+			{
+				IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+				IL2CPP.il2cpp_gc_wbarrier_set_field(intPtr, intPtr + (IntPtr)IL2CPP.il2cpp_field_get_offset(ItemUIManager.NativeFieldInfoPtr_tempIcon), IL2CPP.Il2CppObjectBaseToPtr(value));
+			}
+		}
+
+		// Token: 0x17003399 RID: 13209
+		// (get) Token: 0x0600A9F5 RID: 43509 RVA: 0x002B82CC File Offset: 0x002B64CC
+		// (set) Token: 0x0600A9F6 RID: 43510 RVA: 0x00050DCB File Offset: 0x0004EFCB
+		public unsafe List<GraphicRaycaster> _raycasters
+		{
+			get
+			{
+				IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this) + (IntPtr)IL2CPP.il2cpp_field_get_offset(ItemUIManager.NativeFieldInfoPtr__raycasters);
+				IntPtr intPtr2 = *intPtr;
+				return (intPtr2 != 0) ? Il2CppObjectPool.Get<List<GraphicRaycaster>>(intPtr2) : null;
+			}
+			set
+			{
+				IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+				IL2CPP.il2cpp_gc_wbarrier_set_field(intPtr, intPtr + (IntPtr)IL2CPP.il2cpp_field_get_offset(ItemUIManager.NativeFieldInfoPtr__raycasters), IL2CPP.Il2CppObjectBaseToPtr(value));
+			}
+		}
+
+		// Token: 0x1700339A RID: 13210
+		// (get) Token: 0x0600A9F7 RID: 43511 RVA: 0x002B82FC File Offset: 0x002B64FC
+		// (set) Token: 0x0600A9F8 RID: 43512 RVA: 0x00050DEA File Offset: 0x0004EFEA
+		public unsafe bool isDraggingCash
+		{
+			get
+			{
+				IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this) + (IntPtr)IL2CPP.il2cpp_field_get_offset(ItemUIManager.NativeFieldInfoPtr_isDraggingCash);
+				return *intPtr;
+			}
+			set
+			{
+				*(IL2CPP.Il2CppObjectBaseToPtrNotNull(this) + (IntPtr)IL2CPP.il2cpp_field_get_offset(ItemUIManager.NativeFieldInfoPtr_isDraggingCash)) = value;
+			}
+		}
+
+		// Token: 0x1700339B RID: 13211
+		// (get) Token: 0x0600A9F9 RID: 43513 RVA: 0x002B8324 File Offset: 0x002B6524
+		// (set) Token: 0x0600A9FA RID: 43514 RVA: 0x00050E05 File Offset: 0x0004F005
+		public unsafe float draggedCashAmount
+		{
+			get
+			{
+				IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this) + (IntPtr)IL2CPP.il2cpp_field_get_offset(ItemUIManager.NativeFieldInfoPtr_draggedCashAmount);
+				return *intPtr;
+			}
+			set
+			{
+				*(IL2CPP.Il2CppObjectBaseToPtrNotNull(this) + (IntPtr)IL2CPP.il2cpp_field_get_offset(ItemUIManager.NativeFieldInfoPtr_draggedCashAmount)) = value;
+			}
+		}
+
+		// Token: 0x1700339C RID: 13212
+		// (get) Token: 0x0600A9FB RID: 43515 RVA: 0x002B834C File Offset: 0x002B654C
+		// (set) Token: 0x0600A9FC RID: 43516 RVA: 0x00050E20 File Offset: 0x0004F020
+		public unsafe List<ItemSlot> PrimarySlots
+		{
+			get
+			{
+				IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this) + (IntPtr)IL2CPP.il2cpp_field_get_offset(ItemUIManager.NativeFieldInfoPtr_PrimarySlots);
+				IntPtr intPtr2 = *intPtr;
+				return (intPtr2 != 0) ? Il2CppObjectPool.Get<List<ItemSlot>>(intPtr2) : null;
+			}
+			set
+			{
+				IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+				IL2CPP.il2cpp_gc_wbarrier_set_field(intPtr, intPtr + (IntPtr)IL2CPP.il2cpp_field_get_offset(ItemUIManager.NativeFieldInfoPtr_PrimarySlots), IL2CPP.Il2CppObjectBaseToPtr(value));
+			}
+		}
+
+		// Token: 0x1700339D RID: 13213
+		// (get) Token: 0x0600A9FD RID: 43517 RVA: 0x002B837C File Offset: 0x002B657C
+		// (set) Token: 0x0600A9FE RID: 43518 RVA: 0x00050E3F File Offset: 0x0004F03F
+		public unsafe List<ItemSlot> SecondarySlots
+		{
+			get
+			{
+				IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this) + (IntPtr)IL2CPP.il2cpp_field_get_offset(ItemUIManager.NativeFieldInfoPtr_SecondarySlots);
+				IntPtr intPtr2 = *intPtr;
+				return (intPtr2 != 0) ? Il2CppObjectPool.Get<List<ItemSlot>>(intPtr2) : null;
+			}
+			set
+			{
+				IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+				IL2CPP.il2cpp_gc_wbarrier_set_field(intPtr, intPtr + (IntPtr)IL2CPP.il2cpp_field_get_offset(ItemUIManager.NativeFieldInfoPtr_SecondarySlots), IL2CPP.Il2CppObjectBaseToPtr(value));
+			}
+		}
+
+		// Token: 0x1700339E RID: 13214
+		// (get) Token: 0x0600A9FF RID: 43519 RVA: 0x002B83AC File Offset: 0x002B65AC
+		// (set) Token: 0x0600AA00 RID: 43520 RVA: 0x00050E5E File Offset: 0x0004F05E
+		public unsafe bool customDragAmount
+		{
+			get
+			{
+				IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this) + (IntPtr)IL2CPP.il2cpp_field_get_offset(ItemUIManager.NativeFieldInfoPtr_customDragAmount);
+				return *intPtr;
+			}
+			set
+			{
+				*(IL2CPP.Il2CppObjectBaseToPtrNotNull(this) + (IntPtr)IL2CPP.il2cpp_field_get_offset(ItemUIManager.NativeFieldInfoPtr_customDragAmount)) = value;
+			}
+		}
+
+		// Token: 0x1700339F RID: 13215
+		// (get) Token: 0x0600AA01 RID: 43521 RVA: 0x002B83D4 File Offset: 0x002B65D4
+		// (set) Token: 0x0600AA02 RID: 43522 RVA: 0x00050E79 File Offset: 0x0004F079
+		public unsafe Coroutine quantityChangePopRoutine
+		{
+			get
+			{
+				IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this) + (IntPtr)IL2CPP.il2cpp_field_get_offset(ItemUIManager.NativeFieldInfoPtr_quantityChangePopRoutine);
+				IntPtr intPtr2 = *intPtr;
+				return (intPtr2 != 0) ? Il2CppObjectPool.Get<Coroutine>(intPtr2) : null;
+			}
+			set
+			{
+				IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+				IL2CPP.il2cpp_gc_wbarrier_set_field(intPtr, intPtr + (IntPtr)IL2CPP.il2cpp_field_get_offset(ItemUIManager.NativeFieldInfoPtr_quantityChangePopRoutine), IL2CPP.Il2CppObjectBaseToPtr(value));
+			}
+		}
+
+		// Token: 0x170033A0 RID: 13216
+		// (get) Token: 0x0600AA03 RID: 43523 RVA: 0x002B8404 File Offset: 0x002B6604
+		// (set) Token: 0x0600AA04 RID: 43524 RVA: 0x00050E98 File Offset: 0x0004F098
+		public unsafe UnityEvent onDragStart
+		{
+			get
+			{
+				IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this) + (IntPtr)IL2CPP.il2cpp_field_get_offset(ItemUIManager.NativeFieldInfoPtr_onDragStart);
+				IntPtr intPtr2 = *intPtr;
+				return (intPtr2 != 0) ? Il2CppObjectPool.Get<UnityEvent>(intPtr2) : null;
+			}
+			set
+			{
+				IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+				IL2CPP.il2cpp_gc_wbarrier_set_field(intPtr, intPtr + (IntPtr)IL2CPP.il2cpp_field_get_offset(ItemUIManager.NativeFieldInfoPtr_onDragStart), IL2CPP.Il2CppObjectBaseToPtr(value));
+			}
+		}
+
+		// Token: 0x170033A1 RID: 13217
+		// (get) Token: 0x0600AA05 RID: 43525 RVA: 0x002B8434 File Offset: 0x002B6634
+		// (set) Token: 0x0600AA06 RID: 43526 RVA: 0x00050EB7 File Offset: 0x0004F0B7
+		public unsafe UnityEvent onItemMoved
+		{
+			get
+			{
+				IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this) + (IntPtr)IL2CPP.il2cpp_field_get_offset(ItemUIManager.NativeFieldInfoPtr_onItemMoved);
+				IntPtr intPtr2 = *intPtr;
+				return (intPtr2 != 0) ? Il2CppObjectPool.Get<UnityEvent>(intPtr2) : null;
+			}
+			set
+			{
+				IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+				IL2CPP.il2cpp_gc_wbarrier_set_field(intPtr, intPtr + (IntPtr)IL2CPP.il2cpp_field_get_offset(ItemUIManager.NativeFieldInfoPtr_onItemMoved), IL2CPP.Il2CppObjectBaseToPtr(value));
+			}
+		}
+
+		// Token: 0x040072E5 RID: 29413
+		private static readonly IntPtr NativeFieldInfoPtr__DraggingEnabled_k__BackingField;
+
+		// Token: 0x040072E6 RID: 29414
+		private static readonly IntPtr NativeFieldInfoPtr__HoveredSlot_k__BackingField;
+
+		// Token: 0x040072E7 RID: 29415
+		private static readonly IntPtr NativeFieldInfoPtr__QuickMoveEnabled_k__BackingField;
+
+		// Token: 0x040072E8 RID: 29416
+		private static readonly IntPtr NativeFieldInfoPtr_Canvas;
+
+		// Token: 0x040072E9 RID: 29417
+		private static readonly IntPtr NativeFieldInfoPtr_CashDragAmountContainer;
+
+		// Token: 0x040072EA RID: 29418
+		private static readonly IntPtr NativeFieldInfoPtr_InputsContainer;
+
+		// Token: 0x040072EB RID: 29419
+		private static readonly IntPtr NativeFieldInfoPtr_InfoPanel;
+
+		// Token: 0x040072EC RID: 29420
+		private static readonly IntPtr NativeFieldInfoPtr_ItemQuantityPrompt;
+
+		// Token: 0x040072ED RID: 29421
+		private static readonly IntPtr NativeFieldInfoPtr_CashSlotHintAnim;
+
+		// Token: 0x040072EE RID: 29422
+		private static readonly IntPtr NativeFieldInfoPtr_CashSlotHintAnimCanvasGroup;
+
+		// Token: 0x040072EF RID: 29423
+		private static readonly IntPtr NativeFieldInfoPtr_FilterConfigPanel;
+
+		// Token: 0x040072F0 RID: 29424
+		private static readonly IntPtr NativeFieldInfoPtr_ItemSlotUIPrefab;
+
+		// Token: 0x040072F1 RID: 29425
+		private static readonly IntPtr NativeFieldInfoPtr_DefaultItemUIPrefab;
+
+		// Token: 0x040072F2 RID: 29426
+		private static readonly IntPtr NativeFieldInfoPtr_HotbarSlotUIPrefab;
+
+		// Token: 0x040072F3 RID: 29427
+		private static readonly IntPtr NativeFieldInfoPtr_draggedSlot;
+
+		// Token: 0x040072F4 RID: 29428
+		private static readonly IntPtr NativeFieldInfoPtr_mouseOffset;
+
+		// Token: 0x040072F5 RID: 29429
+		private static readonly IntPtr NativeFieldInfoPtr_draggedAmount;
+
+		// Token: 0x040072F6 RID: 29430
+		private static readonly IntPtr NativeFieldInfoPtr_tempIcon;
+
+		// Token: 0x040072F7 RID: 29431
+		private static readonly IntPtr NativeFieldInfoPtr__raycasters;
+
+		// Token: 0x040072F8 RID: 29432
+		private static readonly IntPtr NativeFieldInfoPtr_isDraggingCash;
+
+		// Token: 0x040072F9 RID: 29433
+		private static readonly IntPtr NativeFieldInfoPtr_draggedCashAmount;
+
+		// Token: 0x040072FA RID: 29434
+		private static readonly IntPtr NativeFieldInfoPtr_PrimarySlots;
+
+		// Token: 0x040072FB RID: 29435
+		private static readonly IntPtr NativeFieldInfoPtr_SecondarySlots;
+
+		// Token: 0x040072FC RID: 29436
+		private static readonly IntPtr NativeFieldInfoPtr_customDragAmount;
+
+		// Token: 0x040072FD RID: 29437
+		private static readonly IntPtr NativeFieldInfoPtr_quantityChangePopRoutine;
+
+		// Token: 0x040072FE RID: 29438
+		private static readonly IntPtr NativeFieldInfoPtr_onDragStart;
+
+		// Token: 0x040072FF RID: 29439
+		private static readonly IntPtr NativeFieldInfoPtr_onItemMoved;
+
+		// Token: 0x04007300 RID: 29440
+		private static readonly IntPtr NativeMethodInfoPtr_get_DraggingEnabled_Public_get_Boolean_0;
+
+		// Token: 0x04007301 RID: 29441
+		private static readonly IntPtr NativeMethodInfoPtr_set_DraggingEnabled_Protected_set_Void_Boolean_0;
+
+		// Token: 0x04007302 RID: 29442
+		private static readonly IntPtr NativeMethodInfoPtr_get_HoveredSlot_Public_get_ItemSlotUI_0;
+
+		// Token: 0x04007303 RID: 29443
+		private static readonly IntPtr NativeMethodInfoPtr_set_HoveredSlot_Protected_set_Void_ItemSlotUI_0;
+
+		// Token: 0x04007304 RID: 29444
+		private static readonly IntPtr NativeMethodInfoPtr_get_QuickMoveEnabled_Public_get_Boolean_0;
+
+		// Token: 0x04007305 RID: 29445
+		private static readonly IntPtr NativeMethodInfoPtr_set_QuickMoveEnabled_Protected_set_Void_Boolean_0;
+
+		// Token: 0x04007306 RID: 29446
+		private static readonly IntPtr NativeMethodInfoPtr_Awake_Protected_Virtual_Void_0;
+
+		// Token: 0x04007307 RID: 29447
+		private static readonly IntPtr NativeMethodInfoPtr_Update_Protected_Virtual_New_Void_0;
+
+		// Token: 0x04007308 RID: 29448
+		private static readonly IntPtr NativeMethodInfoPtr_AddRaycaster_Public_Void_GraphicRaycaster_0;
+
+		// Token: 0x04007309 RID: 29449
+		private static readonly IntPtr NativeMethodInfoPtr_LateUpdate_Protected_Virtual_New_Void_0;
+
+		// Token: 0x0400730A RID: 29450
+		private static readonly IntPtr NativeMethodInfoPtr_UpdateCashDragSelectorUI_Private_Void_0;
+
+		// Token: 0x0400730B RID: 29451
+		private static readonly IntPtr NativeMethodInfoPtr_UpdateCashDragAmount_Private_Void_CashInstance_0;
+
+		// Token: 0x0400730C RID: 29452
+		private static readonly IntPtr NativeMethodInfoPtr_SetDraggingEnabled_Public_Void_Boolean_Boolean_0;
+
+		// Token: 0x0400730D RID: 29453
+		private static readonly IntPtr NativeMethodInfoPtr_EnableQuickMove_Public_Void_List_1_ItemSlot_List_1_ItemSlot_0;
+
+		// Token: 0x0400730E RID: 29454
+		private static readonly IntPtr NativeMethodInfoPtr_GetQuickMoveSlots_Private_List_1_ItemSlot_ItemSlot_0;
+
+		// Token: 0x0400730F RID: 29455
+		private static readonly IntPtr NativeMethodInfoPtr_DisableQuickMove_Public_Void_0;
+
+		// Token: 0x04007310 RID: 29456
+		private static readonly IntPtr NativeMethodInfoPtr_GetHoveredItemSlot_Private_ItemSlotUI_0;
+
+		// Token: 0x04007311 RID: 29457
+		private static readonly IntPtr NativeMethodInfoPtr_GetHoveredItemInfo_Private_ItemDefinitionInfoHoverable_0;
+
+		// Token: 0x04007312 RID: 29458
+		private static readonly IntPtr NativeMethodInfoPtr_SlotClicked_Private_Void_ItemSlotUI_0;
+
+		// Token: 0x04007313 RID: 29459
+		private static readonly IntPtr NativeMethodInfoPtr_StartDragCash_Private_Void_0;
+
+		// Token: 0x04007314 RID: 29460
+		private static readonly IntPtr NativeMethodInfoPtr_EndDrag_Private_Void_0;
+
+		// Token: 0x04007315 RID: 29461
+		private static readonly IntPtr NativeMethodInfoPtr_SetDraggedAmount_Private_Void_Int32_0;
+
+		// Token: 0x04007316 RID: 29462
+		private static readonly IntPtr NativeMethodInfoPtr_EndCashDrag_Private_Void_0;
+
+		// Token: 0x04007317 RID: 29463
+		private static readonly IntPtr NativeMethodInfoPtr_CanDragFromSlot_Public_Boolean_ItemSlotUI_0;
+
+		// Token: 0x04007318 RID: 29464
+		private static readonly IntPtr NativeMethodInfoPtr_CanCashBeDraggedIntoSlot_Public_Boolean_ItemSlotUI_0;
+
+		// Token: 0x04007319 RID: 29465
+		private static readonly IntPtr NativeMethodInfoPtr__ctor_Public_Void_0;
+
+		// Token: 0x02000C81 RID: 3201
+		[ObfuscatedName("ScheduleOne.UI.Items.ItemUIManager+<>c__DisplayClass51_0")]
+		public sealed class __c__DisplayClass51_0 : global::Il2CppSystem.Object
+		{
+			// Token: 0x0600EE9B RID: 61083 RVA: 0x0038F380 File Offset: 0x0038D580
+			// Note: this type is marked as 'beforefieldinit'.
+			static __c__DisplayClass51_0()
+			{
+				Il2CppClassPointerStore<ItemUIManager.__c__DisplayClass51_0>.NativeClassPtr = IL2CPP.GetIl2CppNestedType(Il2CppClassPointerStore<ItemUIManager>.NativeClassPtr, "<>c__DisplayClass51_0");
+				IL2CPP.il2cpp_runtime_class_init(Il2CppClassPointerStore<ItemUIManager.__c__DisplayClass51_0>.NativeClassPtr);
+				ItemUIManager.__c__DisplayClass51_0.NativeFieldInfoPtr_quantityText = IL2CPP.GetIl2CppField(Il2CppClassPointerStore<ItemUIManager.__c__DisplayClass51_0>.NativeClassPtr, "quantityText");
+				ItemUIManager.__c__DisplayClass51_0.NativeFieldInfoPtr___4__this = IL2CPP.GetIl2CppField(Il2CppClassPointerStore<ItemUIManager.__c__DisplayClass51_0>.NativeClassPtr, "<>4__this");
+				ItemUIManager.__c__DisplayClass51_0.NativeMethodInfoPtr__ctor_Public_Void_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<ItemUIManager.__c__DisplayClass51_0>.NativeClassPtr, 100684824);
+				ItemUIManager.__c__DisplayClass51_0.NativeMethodInfoPtr_Method_Internal_IEnumerator_PDM_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<ItemUIManager.__c__DisplayClass51_0>.NativeClassPtr, 100684825);
+			}
+
+			// Token: 0x0600EE9C RID: 61084 RVA: 0x0038F3FC File Offset: 0x0038D5FC
+			[CallerCount(2633)]
+			[CachedScanResults(RefRangeStart = 14, RefRangeEnd = 2647, XrefRangeStart = 14, XrefRangeEnd = 2647, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+			public unsafe __c__DisplayClass51_0()
+				: this(IL2CPP.il2cpp_object_new(Il2CppClassPointerStore<ItemUIManager.__c__DisplayClass51_0>.NativeClassPtr))
+			{
+				IntPtr* ptr = null;
+				IntPtr intPtr2;
+				IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(ItemUIManager.__c__DisplayClass51_0.NativeMethodInfoPtr__ctor_Public_Void_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)ptr, ref intPtr2);
+				Il2CppException.RaiseExceptionIfNecessary(intPtr2);
+			}
+
+			// Token: 0x0600EE9D RID: 61085 RVA: 0x0038F438 File Offset: 0x0038D638
+			[CallerCount(0)]
+			[CachedScanResults(RefRangeStart = 0, RefRangeEnd = 0, XrefRangeStart = 295241, XrefRangeEnd = 295246, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+			public unsafe IEnumerator Method_Internal_IEnumerator_PDM_0()
+			{
+				IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+				IntPtr* ptr = null;
+				IntPtr intPtr2;
+				IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(ItemUIManager.__c__DisplayClass51_0.NativeMethodInfoPtr_Method_Internal_IEnumerator_PDM_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)ptr, ref intPtr2);
+				Il2CppException.RaiseExceptionIfNecessary(intPtr2);
+				IntPtr intPtr3 = intPtr;
+				return (intPtr3 != 0) ? Il2CppObjectPool.Get<IEnumerator>(intPtr3) : null;
+			}
+
+			// Token: 0x0600EE9E RID: 61086 RVA: 0x00071416 File Offset: 0x0006F616
+			public __c__DisplayClass51_0(IntPtr pointer)
+				: base(pointer)
+			{
+			}
+
+			// Token: 0x17004937 RID: 18743
+			// (get) Token: 0x0600EE9F RID: 61087 RVA: 0x0038F478 File Offset: 0x0038D678
+			// (set) Token: 0x0600EEA0 RID: 61088 RVA: 0x0007141F File Offset: 0x0006F61F
+			public unsafe TextMeshProUGUI quantityText
+			{
+				get
+				{
+					IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this) + (IntPtr)IL2CPP.il2cpp_field_get_offset(ItemUIManager.__c__DisplayClass51_0.NativeFieldInfoPtr_quantityText);
+					IntPtr intPtr2 = *intPtr;
+					return (intPtr2 != 0) ? Il2CppObjectPool.Get<TextMeshProUGUI>(intPtr2) : null;
+				}
+				set
+				{
+					IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+					IL2CPP.il2cpp_gc_wbarrier_set_field(intPtr, intPtr + (IntPtr)IL2CPP.il2cpp_field_get_offset(ItemUIManager.__c__DisplayClass51_0.NativeFieldInfoPtr_quantityText), IL2CPP.Il2CppObjectBaseToPtr(value));
+				}
+			}
+
+			// Token: 0x17004938 RID: 18744
+			// (get) Token: 0x0600EEA1 RID: 61089 RVA: 0x0038F4A8 File Offset: 0x0038D6A8
+			// (set) Token: 0x0600EEA2 RID: 61090 RVA: 0x0007143E File Offset: 0x0006F63E
+			public unsafe ItemUIManager __4__this
+			{
+				get
+				{
+					IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this) + (IntPtr)IL2CPP.il2cpp_field_get_offset(ItemUIManager.__c__DisplayClass51_0.NativeFieldInfoPtr___4__this);
+					IntPtr intPtr2 = *intPtr;
+					return (intPtr2 != 0) ? Il2CppObjectPool.Get<ItemUIManager>(intPtr2) : null;
+				}
+				set
+				{
+					IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+					IL2CPP.il2cpp_gc_wbarrier_set_field(intPtr, intPtr + (IntPtr)IL2CPP.il2cpp_field_get_offset(ItemUIManager.__c__DisplayClass51_0.NativeFieldInfoPtr___4__this), IL2CPP.Il2CppObjectBaseToPtr(value));
+				}
+			}
+
+			// Token: 0x0400A0E5 RID: 41189
+			private static readonly IntPtr NativeFieldInfoPtr_quantityText;
+
+			// Token: 0x0400A0E6 RID: 41190
+			private static readonly IntPtr NativeFieldInfoPtr___4__this;
+
+			// Token: 0x0400A0E7 RID: 41191
+			private static readonly IntPtr NativeMethodInfoPtr__ctor_Public_Void_0;
+
+			// Token: 0x0400A0E8 RID: 41192
+			private static readonly IntPtr NativeMethodInfoPtr_Method_Internal_IEnumerator_PDM_0;
+
+			// Token: 0x02000D71 RID: 3441
+			[ObfuscatedName("ScheduleOne.UI.Items.ItemUIManager+<>c__DisplayClass51_0+<<SetDraggedAmount>g__LerpQuantityTextSize|0>d")]
+			public sealed class ObjectCompilerGeneratedNPrivateSealedIEnumerator1ObjectIEnumeratorIDisposableInObReObObUnique : global::Il2CppSystem.Object
+			{
+				// Token: 0x0600F91A RID: 63770 RVA: 0x003AD278 File Offset: 0x003AB478
+				// Note: this type is marked as 'beforefieldinit'.
+				static ObjectCompilerGeneratedNPrivateSealedIEnumerator1ObjectIEnumeratorIDisposableInObReObObUnique()
+				{
+					Il2CppClassPointerStore<ItemUIManager.__c__DisplayClass51_0.ObjectCompilerGeneratedNPrivateSealedIEnumerator1ObjectIEnumeratorIDisposableInObReObObUnique>.NativeClassPtr = IL2CPP.GetIl2CppNestedType(Il2CppClassPointerStore<ItemUIManager.__c__DisplayClass51_0>.NativeClassPtr, "<<SetDraggedAmount>g__LerpQuantityTextSize|0>d");
+					IL2CPP.il2cpp_runtime_class_init(Il2CppClassPointerStore<ItemUIManager.__c__DisplayClass51_0.ObjectCompilerGeneratedNPrivateSealedIEnumerator1ObjectIEnumeratorIDisposableInObReObObUnique>.NativeClassPtr);
+					ItemUIManager.__c__DisplayClass51_0.ObjectCompilerGeneratedNPrivateSealedIEnumerator1ObjectIEnumeratorIDisposableInObReObObUnique.NativeFieldInfoPtr___1__state = IL2CPP.GetIl2CppField(Il2CppClassPointerStore<ItemUIManager.__c__DisplayClass51_0.ObjectCompilerGeneratedNPrivateSealedIEnumerator1ObjectIEnumeratorIDisposableInObReObObUnique>.NativeClassPtr, "<>1__state");
+					ItemUIManager.__c__DisplayClass51_0.ObjectCompilerGeneratedNPrivateSealedIEnumerator1ObjectIEnumeratorIDisposableInObReObObUnique.NativeFieldInfoPtr___2__current = IL2CPP.GetIl2CppField(Il2CppClassPointerStore<ItemUIManager.__c__DisplayClass51_0.ObjectCompilerGeneratedNPrivateSealedIEnumerator1ObjectIEnumeratorIDisposableInObReObObUnique>.NativeClassPtr, "<>2__current");
+					ItemUIManager.__c__DisplayClass51_0.ObjectCompilerGeneratedNPrivateSealedIEnumerator1ObjectIEnumeratorIDisposableInObReObObUnique.NativeFieldInfoPtr___4__this = IL2CPP.GetIl2CppField(Il2CppClassPointerStore<ItemUIManager.__c__DisplayClass51_0.ObjectCompilerGeneratedNPrivateSealedIEnumerator1ObjectIEnumeratorIDisposableInObReObObUnique>.NativeClassPtr, "<>4__this");
+					ItemUIManager.__c__DisplayClass51_0.ObjectCompilerGeneratedNPrivateSealedIEnumerator1ObjectIEnumeratorIDisposableInObReObObUnique.NativeFieldInfoPtr__quantityTransform_5__2 = IL2CPP.GetIl2CppField(Il2CppClassPointerStore<ItemUIManager.__c__DisplayClass51_0.ObjectCompilerGeneratedNPrivateSealedIEnumerator1ObjectIEnumeratorIDisposableInObReObObUnique>.NativeClassPtr, "<quantityTransform>5__2");
+					ItemUIManager.__c__DisplayClass51_0.ObjectCompilerGeneratedNPrivateSealedIEnumerator1ObjectIEnumeratorIDisposableInObReObObUnique.NativeMethodInfoPtr__ctor_Public_Void_Int32_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<ItemUIManager.__c__DisplayClass51_0.ObjectCompilerGeneratedNPrivateSealedIEnumerator1ObjectIEnumeratorIDisposableInObReObObUnique>.NativeClassPtr, 100684826);
+					ItemUIManager.__c__DisplayClass51_0.ObjectCompilerGeneratedNPrivateSealedIEnumerator1ObjectIEnumeratorIDisposableInObReObObUnique.NativeMethodInfoPtr_System_IDisposable_Dispose_Private_Virtual_Final_New_Void_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<ItemUIManager.__c__DisplayClass51_0.ObjectCompilerGeneratedNPrivateSealedIEnumerator1ObjectIEnumeratorIDisposableInObReObObUnique>.NativeClassPtr, 100684827);
+					ItemUIManager.__c__DisplayClass51_0.ObjectCompilerGeneratedNPrivateSealedIEnumerator1ObjectIEnumeratorIDisposableInObReObObUnique.NativeMethodInfoPtr_MoveNext_Private_Virtual_Final_New_Boolean_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<ItemUIManager.__c__DisplayClass51_0.ObjectCompilerGeneratedNPrivateSealedIEnumerator1ObjectIEnumeratorIDisposableInObReObObUnique>.NativeClassPtr, 100684828);
+					ItemUIManager.__c__DisplayClass51_0.ObjectCompilerGeneratedNPrivateSealedIEnumerator1ObjectIEnumeratorIDisposableInObReObObUnique.NativeMethodInfoPtr_System_Collections_Generic_IEnumerator_System_Object__get_Current_Private_Virtual_Final_New_get_Object_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<ItemUIManager.__c__DisplayClass51_0.ObjectCompilerGeneratedNPrivateSealedIEnumerator1ObjectIEnumeratorIDisposableInObReObObUnique>.NativeClassPtr, 100684829);
+					ItemUIManager.__c__DisplayClass51_0.ObjectCompilerGeneratedNPrivateSealedIEnumerator1ObjectIEnumeratorIDisposableInObReObObUnique.NativeMethodInfoPtr_System_Collections_IEnumerator_Reset_Private_Virtual_Final_New_Void_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<ItemUIManager.__c__DisplayClass51_0.ObjectCompilerGeneratedNPrivateSealedIEnumerator1ObjectIEnumeratorIDisposableInObReObObUnique>.NativeClassPtr, 100684830);
+					ItemUIManager.__c__DisplayClass51_0.ObjectCompilerGeneratedNPrivateSealedIEnumerator1ObjectIEnumeratorIDisposableInObReObObUnique.NativeMethodInfoPtr_System_Collections_IEnumerator_get_Current_Private_Virtual_Final_New_get_Object_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<ItemUIManager.__c__DisplayClass51_0.ObjectCompilerGeneratedNPrivateSealedIEnumerator1ObjectIEnumeratorIDisposableInObReObObUnique>.NativeClassPtr, 100684831);
+				}
+
+				// Token: 0x0600F91B RID: 63771 RVA: 0x003AD36C File Offset: 0x003AB56C
+				[CallerCount(68)]
+				[CachedScanResults(RefRangeStart = 2703, RefRangeEnd = 2771, XrefRangeStart = 2703, XrefRangeEnd = 2771, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+				public unsafe ObjectCompilerGeneratedNPrivateSealedIEnumerator1ObjectIEnumeratorIDisposableInObReObObUnique(int <>1__state)
+					: this(IL2CPP.il2cpp_object_new(Il2CppClassPointerStore<ItemUIManager.__c__DisplayClass51_0.ObjectCompilerGeneratedNPrivateSealedIEnumerator1ObjectIEnumeratorIDisposableInObReObObUnique>.NativeClassPtr))
+				{
+					checked
+					{
+						IntPtr* ptr = stackalloc IntPtr[unchecked((UIntPtr)1) * (UIntPtr)sizeof(IntPtr)];
+						*ptr = ref <>1__state;
+						IntPtr intPtr2;
+						IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(ItemUIManager.__c__DisplayClass51_0.ObjectCompilerGeneratedNPrivateSealedIEnumerator1ObjectIEnumeratorIDisposableInObReObObUnique.NativeMethodInfoPtr__ctor_Public_Void_Int32_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)ptr, ref intPtr2);
+						Il2CppException.RaiseExceptionIfNecessary(intPtr2);
+					}
+				}
+
+				// Token: 0x0600F91C RID: 63772 RVA: 0x003AD3B4 File Offset: 0x003AB5B4
+				[CallerCount(14587)]
+				[CachedScanResults(RefRangeStart = 2840, RefRangeEnd = 17427, XrefRangeStart = 2840, XrefRangeEnd = 17427, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+				public unsafe void System_IDisposable_Dispose()
+				{
+					IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+					IntPtr* ptr = null;
+					IntPtr intPtr2;
+					IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(ItemUIManager.__c__DisplayClass51_0.ObjectCompilerGeneratedNPrivateSealedIEnumerator1ObjectIEnumeratorIDisposableInObReObObUnique.NativeMethodInfoPtr_System_IDisposable_Dispose_Private_Virtual_Final_New_Void_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)ptr, ref intPtr2);
+					Il2CppException.RaiseExceptionIfNecessary(intPtr2);
+				}
+
+				// Token: 0x0600F91D RID: 63773 RVA: 0x003AD3E8 File Offset: 0x003AB5E8
+				[CallerCount(0)]
+				[CachedScanResults(RefRangeStart = 0, RefRangeEnd = 0, XrefRangeStart = 295220, XrefRangeEnd = 295236, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+				public unsafe bool MoveNext()
+				{
+					IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+					IntPtr* ptr = null;
+					IntPtr intPtr2;
+					IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(ItemUIManager.__c__DisplayClass51_0.ObjectCompilerGeneratedNPrivateSealedIEnumerator1ObjectIEnumeratorIDisposableInObReObObUnique.NativeMethodInfoPtr_MoveNext_Private_Virtual_Final_New_Boolean_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)ptr, ref intPtr2);
+					Il2CppException.RaiseExceptionIfNecessary(intPtr2);
+					return *IL2CPP.il2cpp_object_unbox(intPtr);
+				}
+
+				// Token: 0x17004CDF RID: 19679
+				// (get) Token: 0x0600F91E RID: 63774 RVA: 0x003AD424 File Offset: 0x003AB624
+				public unsafe global::Il2CppSystem.Object System.Collections.Generic.IEnumerator<System.Object>.Current
+				{
+					[CallerCount(24)]
+					[CachedScanResults(RefRangeStart = 2811, RefRangeEnd = 2835, XrefRangeStart = 2811, XrefRangeEnd = 2835, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+					get
+					{
+						IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+						IntPtr* ptr = null;
+						IntPtr intPtr2;
+						IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(ItemUIManager.__c__DisplayClass51_0.ObjectCompilerGeneratedNPrivateSealedIEnumerator1ObjectIEnumeratorIDisposableInObReObObUnique.NativeMethodInfoPtr_System_Collections_Generic_IEnumerator_System_Object__get_Current_Private_Virtual_Final_New_get_Object_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)ptr, ref intPtr2);
+						Il2CppException.RaiseExceptionIfNecessary(intPtr2);
+						IntPtr intPtr3 = intPtr;
+						return (intPtr3 != 0) ? Il2CppObjectPool.Get<global::Il2CppSystem.Object>(intPtr3) : null;
+					}
+				}
+
+				// Token: 0x0600F91F RID: 63775 RVA: 0x003AD464 File Offset: 0x003AB664
+				[CallerCount(0)]
+				[CachedScanResults(RefRangeStart = 0, RefRangeEnd = 0, XrefRangeStart = 295236, XrefRangeEnd = 295241, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+				public unsafe void System_Collections_IEnumerator_Reset()
+				{
+					IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+					IntPtr* ptr = null;
+					IntPtr intPtr2;
+					IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(ItemUIManager.__c__DisplayClass51_0.ObjectCompilerGeneratedNPrivateSealedIEnumerator1ObjectIEnumeratorIDisposableInObReObObUnique.NativeMethodInfoPtr_System_Collections_IEnumerator_Reset_Private_Virtual_Final_New_Void_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)ptr, ref intPtr2);
+					Il2CppException.RaiseExceptionIfNecessary(intPtr2);
+				}
+
+				// Token: 0x17004CE0 RID: 19680
+				// (get) Token: 0x0600F920 RID: 63776 RVA: 0x003AD498 File Offset: 0x003AB698
+				public unsafe global::Il2CppSystem.Object System.Collections.IEnumerator.Current
+				{
+					[CallerCount(24)]
+					[CachedScanResults(RefRangeStart = 2811, RefRangeEnd = 2835, XrefRangeStart = 2811, XrefRangeEnd = 2835, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+					get
+					{
+						IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+						IntPtr* ptr = null;
+						IntPtr intPtr2;
+						IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(ItemUIManager.__c__DisplayClass51_0.ObjectCompilerGeneratedNPrivateSealedIEnumerator1ObjectIEnumeratorIDisposableInObReObObUnique.NativeMethodInfoPtr_System_Collections_IEnumerator_get_Current_Private_Virtual_Final_New_get_Object_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)ptr, ref intPtr2);
+						Il2CppException.RaiseExceptionIfNecessary(intPtr2);
+						IntPtr intPtr3 = intPtr;
+						return (intPtr3 != 0) ? Il2CppObjectPool.Get<global::Il2CppSystem.Object>(intPtr3) : null;
+					}
+				}
+
+				// Token: 0x0600F921 RID: 63777 RVA: 0x00076B0D File Offset: 0x00074D0D
+				public ObjectCompilerGeneratedNPrivateSealedIEnumerator1ObjectIEnumeratorIDisposableInObReObObUnique(IntPtr pointer)
+					: base(pointer)
+				{
+				}
+
+				// Token: 0x17004CDB RID: 19675
+				// (get) Token: 0x0600F922 RID: 63778 RVA: 0x003AD4D8 File Offset: 0x003AB6D8
+				// (set) Token: 0x0600F923 RID: 63779 RVA: 0x00076B16 File Offset: 0x00074D16
+				public unsafe int __1__state
+				{
+					get
+					{
+						IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this) + (IntPtr)IL2CPP.il2cpp_field_get_offset(ItemUIManager.__c__DisplayClass51_0.ObjectCompilerGeneratedNPrivateSealedIEnumerator1ObjectIEnumeratorIDisposableInObReObObUnique.NativeFieldInfoPtr___1__state);
+						return *intPtr;
+					}
+					set
+					{
+						*(IL2CPP.Il2CppObjectBaseToPtrNotNull(this) + (IntPtr)IL2CPP.il2cpp_field_get_offset(ItemUIManager.__c__DisplayClass51_0.ObjectCompilerGeneratedNPrivateSealedIEnumerator1ObjectIEnumeratorIDisposableInObReObObUnique.NativeFieldInfoPtr___1__state)) = value;
+					}
+				}
+
+				// Token: 0x17004CDC RID: 19676
+				// (get) Token: 0x0600F924 RID: 63780 RVA: 0x003AD500 File Offset: 0x003AB700
+				// (set) Token: 0x0600F925 RID: 63781 RVA: 0x00076B31 File Offset: 0x00074D31
+				public unsafe global::Il2CppSystem.Object __2__current
+				{
+					get
+					{
+						IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this) + (IntPtr)IL2CPP.il2cpp_field_get_offset(ItemUIManager.__c__DisplayClass51_0.ObjectCompilerGeneratedNPrivateSealedIEnumerator1ObjectIEnumeratorIDisposableInObReObObUnique.NativeFieldInfoPtr___2__current);
+						IntPtr intPtr2 = *intPtr;
+						return (intPtr2 != 0) ? Il2CppObjectPool.Get<global::Il2CppSystem.Object>(intPtr2) : null;
+					}
+					set
+					{
+						IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+						IL2CPP.il2cpp_gc_wbarrier_set_field(intPtr, intPtr + (IntPtr)IL2CPP.il2cpp_field_get_offset(ItemUIManager.__c__DisplayClass51_0.ObjectCompilerGeneratedNPrivateSealedIEnumerator1ObjectIEnumeratorIDisposableInObReObObUnique.NativeFieldInfoPtr___2__current), IL2CPP.Il2CppObjectBaseToPtr(value));
+					}
+				}
+
+				// Token: 0x17004CDD RID: 19677
+				// (get) Token: 0x0600F926 RID: 63782 RVA: 0x003AD530 File Offset: 0x003AB730
+				// (set) Token: 0x0600F927 RID: 63783 RVA: 0x00076B50 File Offset: 0x00074D50
+				public unsafe ItemUIManager.__c__DisplayClass51_0 __4__this
+				{
+					get
+					{
+						IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this) + (IntPtr)IL2CPP.il2cpp_field_get_offset(ItemUIManager.__c__DisplayClass51_0.ObjectCompilerGeneratedNPrivateSealedIEnumerator1ObjectIEnumeratorIDisposableInObReObObUnique.NativeFieldInfoPtr___4__this);
+						IntPtr intPtr2 = *intPtr;
+						return (intPtr2 != 0) ? Il2CppObjectPool.Get<ItemUIManager.__c__DisplayClass51_0>(intPtr2) : null;
+					}
+					set
+					{
+						IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+						IL2CPP.il2cpp_gc_wbarrier_set_field(intPtr, intPtr + (IntPtr)IL2CPP.il2cpp_field_get_offset(ItemUIManager.__c__DisplayClass51_0.ObjectCompilerGeneratedNPrivateSealedIEnumerator1ObjectIEnumeratorIDisposableInObReObObUnique.NativeFieldInfoPtr___4__this), IL2CPP.Il2CppObjectBaseToPtr(value));
+					}
+				}
+
+				// Token: 0x17004CDE RID: 19678
+				// (get) Token: 0x0600F928 RID: 63784 RVA: 0x003AD560 File Offset: 0x003AB760
+				// (set) Token: 0x0600F929 RID: 63785 RVA: 0x00076B6F File Offset: 0x00074D6F
+				public unsafe RectTransform _quantityTransform_5__2
+				{
+					get
+					{
+						IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this) + (IntPtr)IL2CPP.il2cpp_field_get_offset(ItemUIManager.__c__DisplayClass51_0.ObjectCompilerGeneratedNPrivateSealedIEnumerator1ObjectIEnumeratorIDisposableInObReObObUnique.NativeFieldInfoPtr__quantityTransform_5__2);
+						IntPtr intPtr2 = *intPtr;
+						return (intPtr2 != 0) ? Il2CppObjectPool.Get<RectTransform>(intPtr2) : null;
+					}
+					set
+					{
+						IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+						IL2CPP.il2cpp_gc_wbarrier_set_field(intPtr, intPtr + (IntPtr)IL2CPP.il2cpp_field_get_offset(ItemUIManager.__c__DisplayClass51_0.ObjectCompilerGeneratedNPrivateSealedIEnumerator1ObjectIEnumeratorIDisposableInObReObObUnique.NativeFieldInfoPtr__quantityTransform_5__2), IL2CPP.Il2CppObjectBaseToPtr(value));
+					}
+				}
+
+				// Token: 0x0400A78A RID: 42890
+				private static readonly IntPtr NativeFieldInfoPtr___1__state;
+
+				// Token: 0x0400A78B RID: 42891
+				private static readonly IntPtr NativeFieldInfoPtr___2__current;
+
+				// Token: 0x0400A78C RID: 42892
+				private static readonly IntPtr NativeFieldInfoPtr___4__this;
+
+				// Token: 0x0400A78D RID: 42893
+				private static readonly IntPtr NativeFieldInfoPtr__quantityTransform_5__2;
+
+				// Token: 0x0400A78E RID: 42894
+				private static readonly IntPtr NativeMethodInfoPtr__ctor_Public_Void_Int32_0;
+
+				// Token: 0x0400A78F RID: 42895
+				private static readonly IntPtr NativeMethodInfoPtr_System_IDisposable_Dispose_Private_Virtual_Final_New_Void_0;
+
+				// Token: 0x0400A790 RID: 42896
+				private static readonly IntPtr NativeMethodInfoPtr_MoveNext_Private_Virtual_Final_New_Boolean_0;
+
+				// Token: 0x0400A791 RID: 42897
+				private static readonly IntPtr NativeMethodInfoPtr_System_Collections_Generic_IEnumerator_System_Object__get_Current_Private_Virtual_Final_New_get_Object_0;
+
+				// Token: 0x0400A792 RID: 42898
+				private static readonly IntPtr NativeMethodInfoPtr_System_Collections_IEnumerator_Reset_Private_Virtual_Final_New_Void_0;
+
+				// Token: 0x0400A793 RID: 42899
+				private static readonly IntPtr NativeMethodInfoPtr_System_Collections_IEnumerator_get_Current_Private_Virtual_Final_New_get_Object_0;
+			}
+		}
+	}
+}

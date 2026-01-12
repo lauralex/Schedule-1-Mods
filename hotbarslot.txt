@@ -1,0 +1,364 @@
+using System;
+using Il2CppInterop.Common.Attributes;
+using Il2CppInterop.Runtime;
+using Il2CppInterop.Runtime.Runtime;
+using Il2CppScheduleOne.Equipping;
+using Il2CppScheduleOne.ItemFramework;
+using Il2CppSystem;
+
+namespace Il2CppScheduleOne.PlayerScripts
+{
+	// Token: 0x02000350 RID: 848
+	public class HotbarSlot : ItemSlot
+	{
+		// Token: 0x06003CB1 RID: 15537 RVA: 0x001403E4 File Offset: 0x0013E5E4
+		// Note: this type is marked as 'beforefieldinit'.
+		static HotbarSlot()
+		{
+			Il2CppClassPointerStore<HotbarSlot>.NativeClassPtr = IL2CPP.GetIl2CppClass("Assembly-CSharp.dll", "ScheduleOne.PlayerScripts", "HotbarSlot");
+			IL2CPP.il2cpp_runtime_class_init(Il2CppClassPointerStore<HotbarSlot>.NativeClassPtr);
+			HotbarSlot.NativeFieldInfoPtr__IsEquipped_k__BackingField = IL2CPP.GetIl2CppField(Il2CppClassPointerStore<HotbarSlot>.NativeClassPtr, "<IsEquipped>k__BackingField");
+			HotbarSlot.NativeFieldInfoPtr_Equippable = IL2CPP.GetIl2CppField(Il2CppClassPointerStore<HotbarSlot>.NativeClassPtr, "Equippable");
+			HotbarSlot.NativeFieldInfoPtr_onEquipChanged = IL2CPP.GetIl2CppField(Il2CppClassPointerStore<HotbarSlot>.NativeClassPtr, "onEquipChanged");
+			HotbarSlot.NativeMethodInfoPtr_get_IsEquipped_Public_get_Boolean_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<HotbarSlot>.NativeClassPtr, 100670580);
+			HotbarSlot.NativeMethodInfoPtr_set_IsEquipped_Protected_set_Void_Boolean_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<HotbarSlot>.NativeClassPtr, 100670581);
+			HotbarSlot.NativeMethodInfoPtr_SetStoredItem_Public_Virtual_Void_ItemInstance_Boolean_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<HotbarSlot>.NativeClassPtr, 100670582);
+			HotbarSlot.NativeMethodInfoPtr_ClearStoredInstance_Public_Virtual_Void_Boolean_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<HotbarSlot>.NativeClassPtr, 100670583);
+			HotbarSlot.NativeMethodInfoPtr_Equip_Public_Virtual_New_Void_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<HotbarSlot>.NativeClassPtr, 100670584);
+			HotbarSlot.NativeMethodInfoPtr_Unequip_Public_Virtual_New_Void_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<HotbarSlot>.NativeClassPtr, 100670585);
+			HotbarSlot.NativeMethodInfoPtr_CanSlotAcceptCash_Public_Virtual_Boolean_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<HotbarSlot>.NativeClassPtr, 100670586);
+			HotbarSlot.NativeMethodInfoPtr__ctor_Public_Void_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<HotbarSlot>.NativeClassPtr, 100670587);
+		}
+
+		// Token: 0x17001359 RID: 4953
+		// (get) Token: 0x06003CB2 RID: 15538 RVA: 0x001404F0 File Offset: 0x0013E6F0
+		// (set) Token: 0x06003CB3 RID: 15539 RVA: 0x0014052C File Offset: 0x0013E72C
+		public unsafe bool IsEquipped
+		{
+			[CallerCount(0)]
+			get
+			{
+				IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+				IntPtr* ptr = null;
+				IntPtr intPtr2;
+				IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(HotbarSlot.NativeMethodInfoPtr_get_IsEquipped_Public_get_Boolean_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)ptr, ref intPtr2);
+				Il2CppException.RaiseExceptionIfNecessary(intPtr2);
+				return *IL2CPP.il2cpp_object_unbox(intPtr);
+			}
+			[CallerCount(0)]
+			set
+			{
+				IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+				checked
+				{
+					IntPtr* ptr = stackalloc IntPtr[unchecked((UIntPtr)1) * (UIntPtr)sizeof(IntPtr)];
+					*ptr = ref value;
+					IntPtr intPtr2;
+					IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(HotbarSlot.NativeMethodInfoPtr_set_IsEquipped_Protected_set_Void_Boolean_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)ptr, ref intPtr2);
+					Il2CppException.RaiseExceptionIfNecessary(intPtr2);
+				}
+			}
+		}
+
+		// Token: 0x06003CB4 RID: 15540 RVA: 0x0014056C File Offset: 0x0013E76C
+		[CallerCount(0)]
+		[CachedScanResults(RefRangeStart = 0, RefRangeEnd = 0, XrefRangeStart = 147966, XrefRangeEnd = 147993, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+		public unsafe override void SetStoredItem(ItemInstance instance, bool _internal = false)
+		{
+			IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+			IntPtr* ptr;
+			checked
+			{
+				ptr = stackalloc IntPtr[unchecked((UIntPtr)2) * (UIntPtr)sizeof(IntPtr)];
+				*ptr = IL2CPP.Il2CppObjectBaseToPtr(instance);
+			}
+			ptr[checked(unchecked((UIntPtr)1) * (UIntPtr)sizeof(IntPtr)) / (UIntPtr)sizeof(IntPtr)] = ref _internal;
+			IntPtr intPtr2;
+			IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(IL2CPP.il2cpp_object_get_virtual_method(IL2CPP.Il2CppObjectBaseToPtr(this), HotbarSlot.NativeMethodInfoPtr_SetStoredItem_Public_Virtual_Void_ItemInstance_Boolean_0), IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)ptr, ref intPtr2);
+			Il2CppException.RaiseExceptionIfNecessary(intPtr2);
+		}
+
+		// Token: 0x06003CB5 RID: 15541 RVA: 0x001405C8 File Offset: 0x0013E7C8
+		[CallerCount(0)]
+		[CachedScanResults(RefRangeStart = 0, RefRangeEnd = 0, XrefRangeStart = 147993, XrefRangeEnd = 148000, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+		public unsafe override void ClearStoredInstance(bool _internal = false)
+		{
+			IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+			checked
+			{
+				IntPtr* ptr = stackalloc IntPtr[unchecked((UIntPtr)1) * (UIntPtr)sizeof(IntPtr)];
+				*ptr = ref _internal;
+				IntPtr intPtr2;
+				IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(IL2CPP.il2cpp_object_get_virtual_method(IL2CPP.Il2CppObjectBaseToPtr(this), HotbarSlot.NativeMethodInfoPtr_ClearStoredInstance_Public_Virtual_Void_Boolean_0), IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)ptr, ref intPtr2);
+				Il2CppException.RaiseExceptionIfNecessary(intPtr2);
+			}
+		}
+
+		// Token: 0x06003CB6 RID: 15542 RVA: 0x00140614 File Offset: 0x0013E814
+		[CallerCount(0)]
+		[CachedScanResults(RefRangeStart = 0, RefRangeEnd = 0, XrefRangeStart = 148000, XrefRangeEnd = 148025, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+		public unsafe virtual void Equip()
+		{
+			IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+			IntPtr* ptr = null;
+			IntPtr intPtr2;
+			IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(IL2CPP.il2cpp_object_get_virtual_method(IL2CPP.Il2CppObjectBaseToPtr(this), HotbarSlot.NativeMethodInfoPtr_Equip_Public_Virtual_New_Void_0), IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)ptr, ref intPtr2);
+			Il2CppException.RaiseExceptionIfNecessary(intPtr2);
+		}
+
+		// Token: 0x06003CB7 RID: 15543 RVA: 0x00140650 File Offset: 0x0013E850
+		[CallerCount(0)]
+		[CachedScanResults(RefRangeStart = 0, RefRangeEnd = 0, XrefRangeStart = 148025, XrefRangeEnd = 148034, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+		public unsafe virtual void Unequip()
+		{
+			IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+			IntPtr* ptr = null;
+			IntPtr intPtr2;
+			IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(IL2CPP.il2cpp_object_get_virtual_method(IL2CPP.Il2CppObjectBaseToPtr(this), HotbarSlot.NativeMethodInfoPtr_Unequip_Public_Virtual_New_Void_0), IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)ptr, ref intPtr2);
+			Il2CppException.RaiseExceptionIfNecessary(intPtr2);
+		}
+
+		// Token: 0x06003CB8 RID: 15544 RVA: 0x0014068C File Offset: 0x0013E88C
+		[CallerCount(177)]
+		[CachedScanResults(RefRangeStart = 33688, RefRangeEnd = 33865, XrefRangeStart = 33688, XrefRangeEnd = 33865, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+		public unsafe override bool CanSlotAcceptCash()
+		{
+			IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+			IntPtr* ptr = null;
+			IntPtr intPtr2;
+			IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(IL2CPP.il2cpp_object_get_virtual_method(IL2CPP.Il2CppObjectBaseToPtr(this), HotbarSlot.NativeMethodInfoPtr_CanSlotAcceptCash_Public_Virtual_Boolean_0), IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)ptr, ref intPtr2);
+			Il2CppException.RaiseExceptionIfNecessary(intPtr2);
+			return *IL2CPP.il2cpp_object_unbox(intPtr);
+		}
+
+		// Token: 0x06003CB9 RID: 15545 RVA: 0x001406D4 File Offset: 0x0013E8D4
+		[CallerCount(2)]
+		[CachedScanResults(RefRangeStart = 148035, RefRangeEnd = 148037, XrefRangeStart = 148034, XrefRangeEnd = 148035, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+		public unsafe HotbarSlot()
+			: this(IL2CPP.il2cpp_object_new(Il2CppClassPointerStore<HotbarSlot>.NativeClassPtr))
+		{
+			IntPtr* ptr = null;
+			IntPtr intPtr2;
+			IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(HotbarSlot.NativeMethodInfoPtr__ctor_Public_Void_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)ptr, ref intPtr2);
+			Il2CppException.RaiseExceptionIfNecessary(intPtr2);
+		}
+
+		// Token: 0x06003CBA RID: 15546 RVA: 0x0001E8E5 File Offset: 0x0001CAE5
+		public HotbarSlot(IntPtr pointer)
+			: base(pointer)
+		{
+		}
+
+		// Token: 0x17001356 RID: 4950
+		// (get) Token: 0x06003CBB RID: 15547 RVA: 0x00140710 File Offset: 0x0013E910
+		// (set) Token: 0x06003CBC RID: 15548 RVA: 0x0001E8EE File Offset: 0x0001CAEE
+		public unsafe bool _IsEquipped_k__BackingField
+		{
+			get
+			{
+				IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this) + (IntPtr)IL2CPP.il2cpp_field_get_offset(HotbarSlot.NativeFieldInfoPtr__IsEquipped_k__BackingField);
+				return *intPtr;
+			}
+			set
+			{
+				*(IL2CPP.Il2CppObjectBaseToPtrNotNull(this) + (IntPtr)IL2CPP.il2cpp_field_get_offset(HotbarSlot.NativeFieldInfoPtr__IsEquipped_k__BackingField)) = value;
+			}
+		}
+
+		// Token: 0x17001357 RID: 4951
+		// (get) Token: 0x06003CBD RID: 15549 RVA: 0x00140738 File Offset: 0x0013E938
+		// (set) Token: 0x06003CBE RID: 15550 RVA: 0x0001E909 File Offset: 0x0001CB09
+		public unsafe Equippable Equippable
+		{
+			get
+			{
+				IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this) + (IntPtr)IL2CPP.il2cpp_field_get_offset(HotbarSlot.NativeFieldInfoPtr_Equippable);
+				IntPtr intPtr2 = *intPtr;
+				return (intPtr2 != 0) ? Il2CppObjectPool.Get<Equippable>(intPtr2) : null;
+			}
+			set
+			{
+				IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+				IL2CPP.il2cpp_gc_wbarrier_set_field(intPtr, intPtr + (IntPtr)IL2CPP.il2cpp_field_get_offset(HotbarSlot.NativeFieldInfoPtr_Equippable), IL2CPP.Il2CppObjectBaseToPtr(value));
+			}
+		}
+
+		// Token: 0x17001358 RID: 4952
+		// (get) Token: 0x06003CBF RID: 15551 RVA: 0x00140768 File Offset: 0x0013E968
+		// (set) Token: 0x06003CC0 RID: 15552 RVA: 0x0001E928 File Offset: 0x0001CB28
+		public unsafe HotbarSlot.EquipEvent onEquipChanged
+		{
+			get
+			{
+				IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this) + (IntPtr)IL2CPP.il2cpp_field_get_offset(HotbarSlot.NativeFieldInfoPtr_onEquipChanged);
+				IntPtr intPtr2 = *intPtr;
+				return (intPtr2 != 0) ? Il2CppObjectPool.Get<HotbarSlot.EquipEvent>(intPtr2) : null;
+			}
+			set
+			{
+				IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+				IL2CPP.il2cpp_gc_wbarrier_set_field(intPtr, intPtr + (IntPtr)IL2CPP.il2cpp_field_get_offset(HotbarSlot.NativeFieldInfoPtr_onEquipChanged), IL2CPP.Il2CppObjectBaseToPtr(value));
+			}
+		}
+
+		// Token: 0x04002803 RID: 10243
+		private static readonly IntPtr NativeFieldInfoPtr__IsEquipped_k__BackingField;
+
+		// Token: 0x04002804 RID: 10244
+		private static readonly IntPtr NativeFieldInfoPtr_Equippable;
+
+		// Token: 0x04002805 RID: 10245
+		private static readonly IntPtr NativeFieldInfoPtr_onEquipChanged;
+
+		// Token: 0x04002806 RID: 10246
+		private static readonly IntPtr NativeMethodInfoPtr_get_IsEquipped_Public_get_Boolean_0;
+
+		// Token: 0x04002807 RID: 10247
+		private static readonly IntPtr NativeMethodInfoPtr_set_IsEquipped_Protected_set_Void_Boolean_0;
+
+		// Token: 0x04002808 RID: 10248
+		private static readonly IntPtr NativeMethodInfoPtr_SetStoredItem_Public_Virtual_Void_ItemInstance_Boolean_0;
+
+		// Token: 0x04002809 RID: 10249
+		private static readonly IntPtr NativeMethodInfoPtr_ClearStoredInstance_Public_Virtual_Void_Boolean_0;
+
+		// Token: 0x0400280A RID: 10250
+		private static readonly IntPtr NativeMethodInfoPtr_Equip_Public_Virtual_New_Void_0;
+
+		// Token: 0x0400280B RID: 10251
+		private static readonly IntPtr NativeMethodInfoPtr_Unequip_Public_Virtual_New_Void_0;
+
+		// Token: 0x0400280C RID: 10252
+		private static readonly IntPtr NativeMethodInfoPtr_CanSlotAcceptCash_Public_Virtual_Boolean_0;
+
+		// Token: 0x0400280D RID: 10253
+		private static readonly IntPtr NativeMethodInfoPtr__ctor_Public_Void_0;
+
+		// Token: 0x020009FB RID: 2555
+		public sealed class EquipEvent : MulticastDelegate
+		{
+			// Token: 0x0600D7FC RID: 55292 RVA: 0x0034E8C4 File Offset: 0x0034CAC4
+			// Note: this type is marked as 'beforefieldinit'.
+			static EquipEvent()
+			{
+				Il2CppClassPointerStore<HotbarSlot.EquipEvent>.NativeClassPtr = IL2CPP.GetIl2CppNestedType(Il2CppClassPointerStore<HotbarSlot>.NativeClassPtr, "EquipEvent");
+				HotbarSlot.EquipEvent.NativeMethodInfoPtr__ctor_Public_Void_Object_IntPtr_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<HotbarSlot.EquipEvent>.NativeClassPtr, 100670588);
+				HotbarSlot.EquipEvent.NativeMethodInfoPtr_Invoke_Public_Virtual_New_Void_Boolean_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<HotbarSlot.EquipEvent>.NativeClassPtr, 100670589);
+				HotbarSlot.EquipEvent.NativeMethodInfoPtr_BeginInvoke_Public_Virtual_New_IAsyncResult_Boolean_AsyncCallback_Object_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<HotbarSlot.EquipEvent>.NativeClassPtr, 100670590);
+				HotbarSlot.EquipEvent.NativeMethodInfoPtr_EndInvoke_Public_Virtual_New_Void_IAsyncResult_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<HotbarSlot.EquipEvent>.NativeClassPtr, 100670591);
+			}
+
+			// Token: 0x0600D7FD RID: 55293 RVA: 0x0034E938 File Offset: 0x0034CB38
+			[CallerCount(45)]
+			[CachedScanResults(RefRangeStart = 147917, RefRangeEnd = 147962, XrefRangeStart = 147914, XrefRangeEnd = 147917, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+			public unsafe EquipEvent(Object @object, IntPtr method)
+				: this(IL2CPP.il2cpp_object_new(Il2CppClassPointerStore<HotbarSlot.EquipEvent>.NativeClassPtr))
+			{
+				IntPtr* ptr;
+				checked
+				{
+					ptr = stackalloc IntPtr[unchecked((UIntPtr)2) * (UIntPtr)sizeof(IntPtr)];
+					*ptr = IL2CPP.Il2CppObjectBaseToPtr(@object);
+				}
+				ptr[checked(unchecked((UIntPtr)1) * (UIntPtr)sizeof(IntPtr)) / (UIntPtr)sizeof(IntPtr)] = ref method;
+				IntPtr intPtr2;
+				IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(HotbarSlot.EquipEvent.NativeMethodInfoPtr__ctor_Public_Void_Object_IntPtr_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)ptr, ref intPtr2);
+				Il2CppException.RaiseExceptionIfNecessary(intPtr2);
+			}
+
+			// Token: 0x0600D7FE RID: 55294 RVA: 0x0034E994 File Offset: 0x0034CB94
+			[CallerCount(0)]
+			public unsafe void Invoke(bool equipped)
+			{
+				IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+				checked
+				{
+					IntPtr* ptr = stackalloc IntPtr[unchecked((UIntPtr)1) * (UIntPtr)sizeof(IntPtr)];
+					*ptr = ref equipped;
+					IntPtr intPtr2;
+					IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(HotbarSlot.EquipEvent.NativeMethodInfoPtr_Invoke_Public_Virtual_New_Void_Boolean_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)ptr, ref intPtr2);
+					Il2CppException.RaiseExceptionIfNecessary(intPtr2);
+				}
+			}
+
+			// Token: 0x0600D7FF RID: 55295 RVA: 0x0034E9D4 File Offset: 0x0034CBD4
+			[CallerCount(0)]
+			[CachedScanResults(RefRangeStart = 0, RefRangeEnd = 0, XrefRangeStart = 147962, XrefRangeEnd = 147966, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+			public unsafe IAsyncResult BeginInvoke(bool equipped, AsyncCallback callback, Object @object)
+			{
+				IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+				IntPtr* ptr;
+				checked
+				{
+					ptr = stackalloc IntPtr[unchecked((UIntPtr)3) * (UIntPtr)sizeof(IntPtr)];
+					*ptr = ref equipped;
+				}
+				ptr[checked(unchecked((UIntPtr)1) * (UIntPtr)sizeof(IntPtr)) / (UIntPtr)sizeof(IntPtr)] = IL2CPP.Il2CppObjectBaseToPtr(callback);
+				ptr[checked(unchecked((UIntPtr)2) * (UIntPtr)sizeof(IntPtr)) / (UIntPtr)sizeof(IntPtr)] = IL2CPP.Il2CppObjectBaseToPtr(@object);
+				IntPtr intPtr2;
+				IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(HotbarSlot.EquipEvent.NativeMethodInfoPtr_BeginInvoke_Public_Virtual_New_IAsyncResult_Boolean_AsyncCallback_Object_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)ptr, ref intPtr2);
+				Il2CppException.RaiseExceptionIfNecessary(intPtr2);
+				IntPtr intPtr3 = intPtr;
+				return (intPtr3 != 0) ? Il2CppObjectPool.Get<IAsyncResult>(intPtr3) : null;
+			}
+
+			// Token: 0x0600D800 RID: 55296 RVA: 0x0034EA44 File Offset: 0x0034CC44
+			[CallerCount(0)]
+			[CachedScanResults(RefRangeStart = 0, RefRangeEnd = 0, XrefRangeStart = 0, XrefRangeEnd = 0, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+			public unsafe void EndInvoke(IAsyncResult result)
+			{
+				IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+				checked
+				{
+					IntPtr* ptr = stackalloc IntPtr[unchecked((UIntPtr)1) * (UIntPtr)sizeof(IntPtr)];
+					*ptr = IL2CPP.Il2CppObjectBaseToPtr(result);
+					IntPtr intPtr2;
+					IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(HotbarSlot.EquipEvent.NativeMethodInfoPtr_EndInvoke_Public_Virtual_New_Void_IAsyncResult_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)ptr, ref intPtr2);
+					Il2CppException.RaiseExceptionIfNecessary(intPtr2);
+				}
+			}
+
+			// Token: 0x0600D801 RID: 55297 RVA: 0x0006627A File Offset: 0x0006447A
+			public EquipEvent(IntPtr pointer)
+				: base(pointer)
+			{
+			}
+
+			// Token: 0x0600D802 RID: 55298 RVA: 0x00066283 File Offset: 0x00064483
+			public static implicit operator HotbarSlot.EquipEvent(Action<bool> A_0)
+			{
+				return DelegateSupport.ConvertDelegate<HotbarSlot.EquipEvent>(A_0);
+			}
+
+			// Token: 0x0600D803 RID: 55299 RVA: 0x0006628B File Offset: 0x0006448B
+			public static HotbarSlot.EquipEvent operator +(HotbarSlot.EquipEvent A_0, HotbarSlot.EquipEvent A_1)
+			{
+				return Delegate.Combine(A_0, A_1).Cast<HotbarSlot.EquipEvent>();
+			}
+
+			// Token: 0x0600D804 RID: 55300 RVA: 0x00066299 File Offset: 0x00064499
+			public static HotbarSlot.EquipEvent operator -(HotbarSlot.EquipEvent A_0, HotbarSlot.EquipEvent A_1)
+			{
+				Delegate delegate2;
+				Delegate @delegate = (delegate2 = Delegate.Remove(A_0, A_1));
+				if (@delegate != null)
+				{
+					delegate2 = @delegate.Cast<HotbarSlot.EquipEvent>();
+				}
+				return delegate2;
+			}
+
+			// Token: 0x04009319 RID: 37657
+			private static readonly IntPtr NativeMethodInfoPtr__ctor_Public_Void_Object_IntPtr_0;
+
+			// Token: 0x0400931A RID: 37658
+			private static readonly IntPtr NativeMethodInfoPtr_Invoke_Public_Virtual_New_Void_Boolean_0;
+
+			// Token: 0x0400931B RID: 37659
+			private static readonly IntPtr NativeMethodInfoPtr_BeginInvoke_Public_Virtual_New_IAsyncResult_Boolean_AsyncCallback_Object_0;
+
+			// Token: 0x0400931C RID: 37660
+			private static readonly IntPtr NativeMethodInfoPtr_EndInvoke_Public_Virtual_New_Void_IAsyncResult_0;
+		}
+	}
+}

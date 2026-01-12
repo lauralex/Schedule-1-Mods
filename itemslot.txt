@@ -1,0 +1,1274 @@
+using System;
+using Il2CppFishNet.Object;
+using Il2CppInterop.Common.Attributes;
+using Il2CppInterop.Runtime;
+using Il2CppInterop.Runtime.Runtime;
+using Il2CppSystem;
+using Il2CppSystem.Collections.Generic;
+
+namespace Il2CppScheduleOne.ItemFramework
+{
+	// Token: 0x02000772 RID: 1906
+	[Serializable]
+	public class ItemSlot : Object
+	{
+		// Token: 0x0600AB93 RID: 43923 RVA: 0x002BDBA4 File Offset: 0x002BBDA4
+		// Note: this type is marked as 'beforefieldinit'.
+		static ItemSlot()
+		{
+			Il2CppClassPointerStore<ItemSlot>.NativeClassPtr = IL2CPP.GetIl2CppClass("Assembly-CSharp.dll", "ScheduleOne.ItemFramework", "ItemSlot");
+			IL2CPP.il2cpp_runtime_class_init(Il2CppClassPointerStore<ItemSlot>.NativeClassPtr);
+			ItemSlot.NativeFieldInfoPtr__ItemInstance_k__BackingField = IL2CPP.GetIl2CppField(Il2CppClassPointerStore<ItemSlot>.NativeClassPtr, "<ItemInstance>k__BackingField");
+			ItemSlot.NativeFieldInfoPtr__SlotOwner_k__BackingField = IL2CPP.GetIl2CppField(Il2CppClassPointerStore<ItemSlot>.NativeClassPtr, "<SlotOwner>k__BackingField");
+			ItemSlot.NativeFieldInfoPtr_onItemDataChanged = IL2CPP.GetIl2CppField(Il2CppClassPointerStore<ItemSlot>.NativeClassPtr, "onItemDataChanged");
+			ItemSlot.NativeFieldInfoPtr_onItemInstanceChanged = IL2CPP.GetIl2CppField(Il2CppClassPointerStore<ItemSlot>.NativeClassPtr, "onItemInstanceChanged");
+			ItemSlot.NativeFieldInfoPtr__ActiveLock_k__BackingField = IL2CPP.GetIl2CppField(Il2CppClassPointerStore<ItemSlot>.NativeClassPtr, "<ActiveLock>k__BackingField");
+			ItemSlot.NativeFieldInfoPtr_onLocked = IL2CPP.GetIl2CppField(Il2CppClassPointerStore<ItemSlot>.NativeClassPtr, "onLocked");
+			ItemSlot.NativeFieldInfoPtr_onUnlocked = IL2CPP.GetIl2CppField(Il2CppClassPointerStore<ItemSlot>.NativeClassPtr, "onUnlocked");
+			ItemSlot.NativeFieldInfoPtr__IsRemovalLocked_k__BackingField = IL2CPP.GetIl2CppField(Il2CppClassPointerStore<ItemSlot>.NativeClassPtr, "<IsRemovalLocked>k__BackingField");
+			ItemSlot.NativeFieldInfoPtr__IsAddLocked_k__BackingField = IL2CPP.GetIl2CppField(Il2CppClassPointerStore<ItemSlot>.NativeClassPtr, "<IsAddLocked>k__BackingField");
+			ItemSlot.NativeFieldInfoPtr__HardFilters_k__BackingField = IL2CPP.GetIl2CppField(Il2CppClassPointerStore<ItemSlot>.NativeClassPtr, "<HardFilters>k__BackingField");
+			ItemSlot.NativeFieldInfoPtr__CanPlayerSetFilter_k__BackingField = IL2CPP.GetIl2CppField(Il2CppClassPointerStore<ItemSlot>.NativeClassPtr, "<CanPlayerSetFilter>k__BackingField");
+			ItemSlot.NativeFieldInfoPtr__PlayerFilter_k__BackingField = IL2CPP.GetIl2CppField(Il2CppClassPointerStore<ItemSlot>.NativeClassPtr, "<PlayerFilter>k__BackingField");
+			ItemSlot.NativeFieldInfoPtr_onFilterChange = IL2CPP.GetIl2CppField(Il2CppClassPointerStore<ItemSlot>.NativeClassPtr, "onFilterChange");
+			ItemSlot.NativeFieldInfoPtr__SiblingSet_k__BackingField = IL2CPP.GetIl2CppField(Il2CppClassPointerStore<ItemSlot>.NativeClassPtr, "<SiblingSet>k__BackingField");
+			ItemSlot.NativeMethodInfoPtr_get_ItemInstance_Public_get_ItemInstance_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<ItemSlot>.NativeClassPtr, 100685023);
+			ItemSlot.NativeMethodInfoPtr_set_ItemInstance_Protected_set_Void_ItemInstance_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<ItemSlot>.NativeClassPtr, 100685024);
+			ItemSlot.NativeMethodInfoPtr_get_SlotOwner_Public_get_IItemSlotOwner_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<ItemSlot>.NativeClassPtr, 100685025);
+			ItemSlot.NativeMethodInfoPtr_set_SlotOwner_Protected_set_Void_IItemSlotOwner_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<ItemSlot>.NativeClassPtr, 100685026);
+			ItemSlot.NativeMethodInfoPtr_get_SlotIndex_Private_get_Int32_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<ItemSlot>.NativeClassPtr, 100685027);
+			ItemSlot.NativeMethodInfoPtr_get_Quantity_Public_get_Int32_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<ItemSlot>.NativeClassPtr, 100685028);
+			ItemSlot.NativeMethodInfoPtr_get_IsAtCapacity_Public_get_Boolean_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<ItemSlot>.NativeClassPtr, 100685029);
+			ItemSlot.NativeMethodInfoPtr_get_IsLocked_Public_get_Boolean_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<ItemSlot>.NativeClassPtr, 100685030);
+			ItemSlot.NativeMethodInfoPtr_get_ActiveLock_Public_get_ItemSlotLock_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<ItemSlot>.NativeClassPtr, 100685031);
+			ItemSlot.NativeMethodInfoPtr_set_ActiveLock_Protected_set_Void_ItemSlotLock_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<ItemSlot>.NativeClassPtr, 100685032);
+			ItemSlot.NativeMethodInfoPtr_get_IsRemovalLocked_Public_get_Boolean_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<ItemSlot>.NativeClassPtr, 100685033);
+			ItemSlot.NativeMethodInfoPtr_set_IsRemovalLocked_Protected_set_Void_Boolean_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<ItemSlot>.NativeClassPtr, 100685034);
+			ItemSlot.NativeMethodInfoPtr_get_IsAddLocked_Public_get_Boolean_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<ItemSlot>.NativeClassPtr, 100685035);
+			ItemSlot.NativeMethodInfoPtr_set_IsAddLocked_Protected_set_Void_Boolean_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<ItemSlot>.NativeClassPtr, 100685036);
+			ItemSlot.NativeMethodInfoPtr_get_HardFilters_Protected_get_List_1_ItemFilter_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<ItemSlot>.NativeClassPtr, 100685037);
+			ItemSlot.NativeMethodInfoPtr_set_HardFilters_Protected_set_Void_List_1_ItemFilter_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<ItemSlot>.NativeClassPtr, 100685038);
+			ItemSlot.NativeMethodInfoPtr_get_CanPlayerSetFilter_Public_get_Boolean_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<ItemSlot>.NativeClassPtr, 100685039);
+			ItemSlot.NativeMethodInfoPtr_set_CanPlayerSetFilter_Public_set_Void_Boolean_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<ItemSlot>.NativeClassPtr, 100685040);
+			ItemSlot.NativeMethodInfoPtr_get_PlayerFilter_Public_get_SlotFilter_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<ItemSlot>.NativeClassPtr, 100685041);
+			ItemSlot.NativeMethodInfoPtr_set_PlayerFilter_Public_set_Void_SlotFilter_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<ItemSlot>.NativeClassPtr, 100685042);
+			ItemSlot.NativeMethodInfoPtr_get_SiblingSet_Public_get_ItemSlotSiblingSet_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<ItemSlot>.NativeClassPtr, 100685043);
+			ItemSlot.NativeMethodInfoPtr_set_SiblingSet_Public_set_Void_ItemSlotSiblingSet_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<ItemSlot>.NativeClassPtr, 100685044);
+			ItemSlot.NativeMethodInfoPtr_SetSlotOwner_Public_Void_IItemSlotOwner_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<ItemSlot>.NativeClassPtr, 100685045);
+			ItemSlot.NativeMethodInfoPtr_SetSiblingSet_Public_Void_ItemSlotSiblingSet_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<ItemSlot>.NativeClassPtr, 100685046);
+			ItemSlot.NativeMethodInfoPtr__ctor_Public_Void_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<ItemSlot>.NativeClassPtr, 100685047);
+			ItemSlot.NativeMethodInfoPtr__ctor_Public_Void_Boolean_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<ItemSlot>.NativeClassPtr, 100685048);
+			ItemSlot.NativeMethodInfoPtr_ReplicateStoredInstance_Public_Void_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<ItemSlot>.NativeClassPtr, 100685049);
+			ItemSlot.NativeMethodInfoPtr_SetStoredItem_Public_Virtual_New_Void_ItemInstance_Boolean_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<ItemSlot>.NativeClassPtr, 100685050);
+			ItemSlot.NativeMethodInfoPtr_InsertItem_Public_Virtual_New_Void_ItemInstance_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<ItemSlot>.NativeClassPtr, 100685051);
+			ItemSlot.NativeMethodInfoPtr_AddItem_Public_Virtual_New_Void_ItemInstance_Boolean_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<ItemSlot>.NativeClassPtr, 100685052);
+			ItemSlot.NativeMethodInfoPtr_ClearStoredInstance_Public_Virtual_New_Void_Boolean_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<ItemSlot>.NativeClassPtr, 100685053);
+			ItemSlot.NativeMethodInfoPtr_SetQuantity_Public_Void_Int32_Boolean_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<ItemSlot>.NativeClassPtr, 100685054);
+			ItemSlot.NativeMethodInfoPtr_ChangeQuantity_Public_Void_Int32_Boolean_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<ItemSlot>.NativeClassPtr, 100685055);
+			ItemSlot.NativeMethodInfoPtr_ItemDataChanged_Protected_Virtual_New_Void_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<ItemSlot>.NativeClassPtr, 100685056);
+			ItemSlot.NativeMethodInfoPtr_ClearItemInstanceRequested_Protected_Virtual_New_Void_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<ItemSlot>.NativeClassPtr, 100685057);
+			ItemSlot.NativeMethodInfoPtr_AddFilter_Public_Void_ItemFilter_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<ItemSlot>.NativeClassPtr, 100685058);
+			ItemSlot.NativeMethodInfoPtr_ApplyLock_Public_Void_NetworkObject_String_Boolean_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<ItemSlot>.NativeClassPtr, 100685059);
+			ItemSlot.NativeMethodInfoPtr_RemoveLock_Public_Void_Boolean_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<ItemSlot>.NativeClassPtr, 100685060);
+			ItemSlot.NativeMethodInfoPtr_SetIsRemovalLocked_Public_Void_Boolean_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<ItemSlot>.NativeClassPtr, 100685061);
+			ItemSlot.NativeMethodInfoPtr_SetIsAddLocked_Public_Void_Boolean_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<ItemSlot>.NativeClassPtr, 100685062);
+			ItemSlot.NativeMethodInfoPtr_DoesItemMatchHardFilters_Public_Virtual_New_Boolean_ItemInstance_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<ItemSlot>.NativeClassPtr, 100685063);
+			ItemSlot.NativeMethodInfoPtr_DoesItemMatchPlayerFilters_Public_Virtual_New_Boolean_ItemInstance_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<ItemSlot>.NativeClassPtr, 100685064);
+			ItemSlot.NativeMethodInfoPtr_SetFilterable_Public_Void_Boolean_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<ItemSlot>.NativeClassPtr, 100685065);
+			ItemSlot.NativeMethodInfoPtr_SetPlayerFilter_Public_Void_SlotFilter_Boolean_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<ItemSlot>.NativeClassPtr, 100685066);
+			ItemSlot.NativeMethodInfoPtr_GetCapacityForItem_Public_Virtual_New_Int32_ItemInstance_Boolean_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<ItemSlot>.NativeClassPtr, 100685067);
+			ItemSlot.NativeMethodInfoPtr_CanSlotAcceptCash_Public_Virtual_New_Boolean_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<ItemSlot>.NativeClassPtr, 100685068);
+			ItemSlot.NativeMethodInfoPtr_TryInsertItemIntoSet_Public_Static_Boolean_List_1_ItemSlot_ItemInstance_0 = IL2CPP.GetIl2CppMethodByToken(Il2CppClassPointerStore<ItemSlot>.NativeClassPtr, 100685069);
+		}
+
+		// Token: 0x17003411 RID: 13329
+		// (get) Token: 0x0600AB94 RID: 43924 RVA: 0x002BE098 File Offset: 0x002BC298
+		// (set) Token: 0x0600AB95 RID: 43925 RVA: 0x002BE0D8 File Offset: 0x002BC2D8
+		public unsafe ItemInstance ItemInstance
+		{
+			[CallerCount(12)]
+			[CachedScanResults(RefRangeStart = 18794, RefRangeEnd = 18806, XrefRangeStart = 18794, XrefRangeEnd = 18806, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+			get
+			{
+				IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+				IntPtr* ptr = null;
+				IntPtr intPtr2;
+				IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(ItemSlot.NativeMethodInfoPtr_get_ItemInstance_Public_get_ItemInstance_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)ptr, ref intPtr2);
+				Il2CppException.RaiseExceptionIfNecessary(intPtr2);
+				IntPtr intPtr3 = intPtr;
+				return (intPtr3 != 0) ? Il2CppObjectPool.Get<ItemInstance>(intPtr3) : null;
+			}
+			[CallerCount(2)]
+			[CachedScanResults(RefRangeStart = 31665, RefRangeEnd = 31667, XrefRangeStart = 31665, XrefRangeEnd = 31667, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+			set
+			{
+				IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+				checked
+				{
+					IntPtr* ptr = stackalloc IntPtr[unchecked((UIntPtr)1) * (UIntPtr)sizeof(IntPtr)];
+					*ptr = IL2CPP.Il2CppObjectBaseToPtr(value);
+					IntPtr intPtr2;
+					IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(ItemSlot.NativeMethodInfoPtr_set_ItemInstance_Protected_set_Void_ItemInstance_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)ptr, ref intPtr2);
+					Il2CppException.RaiseExceptionIfNecessary(intPtr2);
+				}
+			}
+		}
+
+		// Token: 0x17003412 RID: 13330
+		// (get) Token: 0x0600AB96 RID: 43926 RVA: 0x002BE11C File Offset: 0x002BC31C
+		// (set) Token: 0x0600AB97 RID: 43927 RVA: 0x002BE15C File Offset: 0x002BC35C
+		public unsafe IItemSlotOwner SlotOwner
+		{
+			[CallerCount(24)]
+			[CachedScanResults(RefRangeStart = 2811, RefRangeEnd = 2835, XrefRangeStart = 2811, XrefRangeEnd = 2835, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+			get
+			{
+				IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+				IntPtr* ptr = null;
+				IntPtr intPtr2;
+				IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(ItemSlot.NativeMethodInfoPtr_get_SlotOwner_Public_get_IItemSlotOwner_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)ptr, ref intPtr2);
+				Il2CppException.RaiseExceptionIfNecessary(intPtr2);
+				IntPtr intPtr3 = intPtr;
+				return (intPtr3 != 0) ? Il2CppObjectPool.Get<IItemSlotOwner>(intPtr3) : null;
+			}
+			[CallerCount(0)]
+			[CachedScanResults(RefRangeStart = 0, RefRangeEnd = 0, XrefRangeStart = 0, XrefRangeEnd = 0, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+			set
+			{
+				IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+				checked
+				{
+					IntPtr* ptr = stackalloc IntPtr[unchecked((UIntPtr)1) * (UIntPtr)sizeof(IntPtr)];
+					*ptr = IL2CPP.Il2CppObjectBaseToPtr(value);
+					IntPtr intPtr2;
+					IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(ItemSlot.NativeMethodInfoPtr_set_SlotOwner_Protected_set_Void_IItemSlotOwner_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)ptr, ref intPtr2);
+					Il2CppException.RaiseExceptionIfNecessary(intPtr2);
+				}
+			}
+		}
+
+		// Token: 0x17003413 RID: 13331
+		// (get) Token: 0x0600AB98 RID: 43928 RVA: 0x002BE1A0 File Offset: 0x002BC3A0
+		public unsafe int SlotIndex
+		{
+			[CallerCount(0)]
+			[CachedScanResults(RefRangeStart = 0, RefRangeEnd = 0, XrefRangeStart = 297574, XrefRangeEnd = 297581, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+			get
+			{
+				IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+				IntPtr* ptr = null;
+				IntPtr intPtr2;
+				IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(ItemSlot.NativeMethodInfoPtr_get_SlotIndex_Private_get_Int32_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)ptr, ref intPtr2);
+				Il2CppException.RaiseExceptionIfNecessary(intPtr2);
+				return *IL2CPP.il2cpp_object_unbox(intPtr);
+			}
+		}
+
+		// Token: 0x17003414 RID: 13332
+		// (get) Token: 0x0600AB99 RID: 43929 RVA: 0x002BE1DC File Offset: 0x002BC3DC
+		public unsafe int Quantity
+		{
+			[CallerCount(82)]
+			[CachedScanResults(RefRangeStart = 297581, RefRangeEnd = 297663, XrefRangeStart = 297581, XrefRangeEnd = 297581, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+			get
+			{
+				IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+				IntPtr* ptr = null;
+				IntPtr intPtr2;
+				IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(ItemSlot.NativeMethodInfoPtr_get_Quantity_Public_get_Int32_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)ptr, ref intPtr2);
+				Il2CppException.RaiseExceptionIfNecessary(intPtr2);
+				return *IL2CPP.il2cpp_object_unbox(intPtr);
+			}
+		}
+
+		// Token: 0x17003415 RID: 13333
+		// (get) Token: 0x0600AB9A RID: 43930 RVA: 0x002BE218 File Offset: 0x002BC418
+		public unsafe bool IsAtCapacity
+		{
+			[CallerCount(0)]
+			get
+			{
+				IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+				IntPtr* ptr = null;
+				IntPtr intPtr2;
+				IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(ItemSlot.NativeMethodInfoPtr_get_IsAtCapacity_Public_get_Boolean_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)ptr, ref intPtr2);
+				Il2CppException.RaiseExceptionIfNecessary(intPtr2);
+				return *IL2CPP.il2cpp_object_unbox(intPtr);
+			}
+		}
+
+		// Token: 0x17003416 RID: 13334
+		// (get) Token: 0x0600AB9B RID: 43931 RVA: 0x002BE254 File Offset: 0x002BC454
+		public unsafe bool IsLocked
+		{
+			[CallerCount(13)]
+			[CachedScanResults(RefRangeStart = 297663, RefRangeEnd = 297676, XrefRangeStart = 297663, XrefRangeEnd = 297663, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+			get
+			{
+				IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+				IntPtr* ptr = null;
+				IntPtr intPtr2;
+				IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(ItemSlot.NativeMethodInfoPtr_get_IsLocked_Public_get_Boolean_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)ptr, ref intPtr2);
+				Il2CppException.RaiseExceptionIfNecessary(intPtr2);
+				return *IL2CPP.il2cpp_object_unbox(intPtr);
+			}
+		}
+
+		// Token: 0x17003417 RID: 13335
+		// (get) Token: 0x0600AB9C RID: 43932 RVA: 0x002BE290 File Offset: 0x002BC490
+		// (set) Token: 0x0600AB9D RID: 43933 RVA: 0x002BE2D0 File Offset: 0x002BC4D0
+		public unsafe ItemSlotLock ActiveLock
+		{
+			[CallerCount(14)]
+			[CachedScanResults(RefRangeStart = 21088, RefRangeEnd = 21102, XrefRangeStart = 21088, XrefRangeEnd = 21102, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+			get
+			{
+				IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+				IntPtr* ptr = null;
+				IntPtr intPtr2;
+				IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(ItemSlot.NativeMethodInfoPtr_get_ActiveLock_Public_get_ItemSlotLock_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)ptr, ref intPtr2);
+				Il2CppException.RaiseExceptionIfNecessary(intPtr2);
+				IntPtr intPtr3 = intPtr;
+				return (intPtr3 != 0) ? Il2CppObjectPool.Get<ItemSlotLock>(intPtr3) : null;
+			}
+			[CallerCount(0)]
+			[CachedScanResults(RefRangeStart = 0, RefRangeEnd = 0, XrefRangeStart = 0, XrefRangeEnd = 0, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+			set
+			{
+				IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+				checked
+				{
+					IntPtr* ptr = stackalloc IntPtr[unchecked((UIntPtr)1) * (UIntPtr)sizeof(IntPtr)];
+					*ptr = IL2CPP.Il2CppObjectBaseToPtr(value);
+					IntPtr intPtr2;
+					IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(ItemSlot.NativeMethodInfoPtr_set_ActiveLock_Protected_set_Void_ItemSlotLock_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)ptr, ref intPtr2);
+					Il2CppException.RaiseExceptionIfNecessary(intPtr2);
+				}
+			}
+		}
+
+		// Token: 0x17003418 RID: 13336
+		// (get) Token: 0x0600AB9E RID: 43934 RVA: 0x002BE314 File Offset: 0x002BC514
+		// (set) Token: 0x0600AB9F RID: 43935 RVA: 0x002BE350 File Offset: 0x002BC550
+		public unsafe bool IsRemovalLocked
+		{
+			[CallerCount(0)]
+			get
+			{
+				IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+				IntPtr* ptr = null;
+				IntPtr intPtr2;
+				IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(ItemSlot.NativeMethodInfoPtr_get_IsRemovalLocked_Public_get_Boolean_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)ptr, ref intPtr2);
+				Il2CppException.RaiseExceptionIfNecessary(intPtr2);
+				return *IL2CPP.il2cpp_object_unbox(intPtr);
+			}
+			[CallerCount(3)]
+			[CachedScanResults(RefRangeStart = 49534, RefRangeEnd = 49537, XrefRangeStart = 49534, XrefRangeEnd = 49537, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+			set
+			{
+				IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+				checked
+				{
+					IntPtr* ptr = stackalloc IntPtr[unchecked((UIntPtr)1) * (UIntPtr)sizeof(IntPtr)];
+					*ptr = ref value;
+					IntPtr intPtr2;
+					IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(ItemSlot.NativeMethodInfoPtr_set_IsRemovalLocked_Protected_set_Void_Boolean_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)ptr, ref intPtr2);
+					Il2CppException.RaiseExceptionIfNecessary(intPtr2);
+				}
+			}
+		}
+
+		// Token: 0x17003419 RID: 13337
+		// (get) Token: 0x0600ABA0 RID: 43936 RVA: 0x002BE390 File Offset: 0x002BC590
+		// (set) Token: 0x0600ABA1 RID: 43937 RVA: 0x002BE3CC File Offset: 0x002BC5CC
+		public unsafe bool IsAddLocked
+		{
+			[CallerCount(0)]
+			get
+			{
+				IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+				IntPtr* ptr = null;
+				IntPtr intPtr2;
+				IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(ItemSlot.NativeMethodInfoPtr_get_IsAddLocked_Public_get_Boolean_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)ptr, ref intPtr2);
+				Il2CppException.RaiseExceptionIfNecessary(intPtr2);
+				return *IL2CPP.il2cpp_object_unbox(intPtr);
+			}
+			[CallerCount(11)]
+			[CachedScanResults(RefRangeStart = 49520, RefRangeEnd = 49531, XrefRangeStart = 49520, XrefRangeEnd = 49531, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+			set
+			{
+				IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+				checked
+				{
+					IntPtr* ptr = stackalloc IntPtr[unchecked((UIntPtr)1) * (UIntPtr)sizeof(IntPtr)];
+					*ptr = ref value;
+					IntPtr intPtr2;
+					IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(ItemSlot.NativeMethodInfoPtr_set_IsAddLocked_Protected_set_Void_Boolean_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)ptr, ref intPtr2);
+					Il2CppException.RaiseExceptionIfNecessary(intPtr2);
+				}
+			}
+		}
+
+		// Token: 0x1700341A RID: 13338
+		// (get) Token: 0x0600ABA2 RID: 43938 RVA: 0x002BE40C File Offset: 0x002BC60C
+		// (set) Token: 0x0600ABA3 RID: 43939 RVA: 0x002BE44C File Offset: 0x002BC64C
+		public unsafe List<ItemFilter> HardFilters
+		{
+			[CallerCount(1)]
+			[CachedScanResults(RefRangeStart = 17985, RefRangeEnd = 17986, XrefRangeStart = 17985, XrefRangeEnd = 17986, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+			get
+			{
+				IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+				IntPtr* ptr = null;
+				IntPtr intPtr2;
+				IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(ItemSlot.NativeMethodInfoPtr_get_HardFilters_Protected_get_List_1_ItemFilter_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)ptr, ref intPtr2);
+				Il2CppException.RaiseExceptionIfNecessary(intPtr2);
+				IntPtr intPtr3 = intPtr;
+				return (intPtr3 != 0) ? Il2CppObjectPool.Get<List<ItemFilter>>(intPtr3) : null;
+			}
+			[CallerCount(2)]
+			[CachedScanResults(RefRangeStart = 36107, RefRangeEnd = 36109, XrefRangeStart = 36107, XrefRangeEnd = 36109, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+			set
+			{
+				IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+				checked
+				{
+					IntPtr* ptr = stackalloc IntPtr[unchecked((UIntPtr)1) * (UIntPtr)sizeof(IntPtr)];
+					*ptr = IL2CPP.Il2CppObjectBaseToPtr(value);
+					IntPtr intPtr2;
+					IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(ItemSlot.NativeMethodInfoPtr_set_HardFilters_Protected_set_Void_List_1_ItemFilter_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)ptr, ref intPtr2);
+					Il2CppException.RaiseExceptionIfNecessary(intPtr2);
+				}
+			}
+		}
+
+		// Token: 0x1700341B RID: 13339
+		// (get) Token: 0x0600ABA4 RID: 43940 RVA: 0x002BE490 File Offset: 0x002BC690
+		// (set) Token: 0x0600ABA5 RID: 43941 RVA: 0x002BE4CC File Offset: 0x002BC6CC
+		public unsafe bool CanPlayerSetFilter
+		{
+			[CallerCount(0)]
+			get
+			{
+				IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+				IntPtr* ptr = null;
+				IntPtr intPtr2;
+				IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(ItemSlot.NativeMethodInfoPtr_get_CanPlayerSetFilter_Public_get_Boolean_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)ptr, ref intPtr2);
+				Il2CppException.RaiseExceptionIfNecessary(intPtr2);
+				return *IL2CPP.il2cpp_object_unbox(intPtr);
+			}
+			[CallerCount(0)]
+			set
+			{
+				IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+				checked
+				{
+					IntPtr* ptr = stackalloc IntPtr[unchecked((UIntPtr)1) * (UIntPtr)sizeof(IntPtr)];
+					*ptr = ref value;
+					IntPtr intPtr2;
+					IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(ItemSlot.NativeMethodInfoPtr_set_CanPlayerSetFilter_Public_set_Void_Boolean_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)ptr, ref intPtr2);
+					Il2CppException.RaiseExceptionIfNecessary(intPtr2);
+				}
+			}
+		}
+
+		// Token: 0x1700341C RID: 13340
+		// (get) Token: 0x0600ABA6 RID: 43942 RVA: 0x002BE50C File Offset: 0x002BC70C
+		// (set) Token: 0x0600ABA7 RID: 43943 RVA: 0x002BE54C File Offset: 0x002BC74C
+		public unsafe SlotFilter PlayerFilter
+		{
+			[CallerCount(44)]
+			[CachedScanResults(RefRangeStart = 45777, RefRangeEnd = 45821, XrefRangeStart = 45777, XrefRangeEnd = 45821, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+			get
+			{
+				IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+				IntPtr* ptr = null;
+				IntPtr intPtr2;
+				IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(ItemSlot.NativeMethodInfoPtr_get_PlayerFilter_Public_get_SlotFilter_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)ptr, ref intPtr2);
+				Il2CppException.RaiseExceptionIfNecessary(intPtr2);
+				IntPtr intPtr3 = intPtr;
+				return (intPtr3 != 0) ? Il2CppObjectPool.Get<SlotFilter>(intPtr3) : null;
+			}
+			[CallerCount(0)]
+			[CachedScanResults(RefRangeStart = 0, RefRangeEnd = 0, XrefRangeStart = 0, XrefRangeEnd = 0, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+			set
+			{
+				IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+				checked
+				{
+					IntPtr* ptr = stackalloc IntPtr[unchecked((UIntPtr)1) * (UIntPtr)sizeof(IntPtr)];
+					*ptr = IL2CPP.Il2CppObjectBaseToPtr(value);
+					IntPtr intPtr2;
+					IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(ItemSlot.NativeMethodInfoPtr_set_PlayerFilter_Public_set_Void_SlotFilter_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)ptr, ref intPtr2);
+					Il2CppException.RaiseExceptionIfNecessary(intPtr2);
+				}
+			}
+		}
+
+		// Token: 0x1700341D RID: 13341
+		// (get) Token: 0x0600ABA8 RID: 43944 RVA: 0x002BE590 File Offset: 0x002BC790
+		// (set) Token: 0x0600ABA9 RID: 43945 RVA: 0x002BE5D0 File Offset: 0x002BC7D0
+		public unsafe ItemSlotSiblingSet SiblingSet
+		{
+			[CallerCount(1)]
+			[CachedScanResults(RefRangeStart = 24589, RefRangeEnd = 24590, XrefRangeStart = 24589, XrefRangeEnd = 24590, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+			get
+			{
+				IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+				IntPtr* ptr = null;
+				IntPtr intPtr2;
+				IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(ItemSlot.NativeMethodInfoPtr_get_SiblingSet_Public_get_ItemSlotSiblingSet_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)ptr, ref intPtr2);
+				Il2CppException.RaiseExceptionIfNecessary(intPtr2);
+				IntPtr intPtr3 = intPtr;
+				return (intPtr3 != 0) ? Il2CppObjectPool.Get<ItemSlotSiblingSet>(intPtr3) : null;
+			}
+			[CallerCount(0)]
+			[CachedScanResults(RefRangeStart = 0, RefRangeEnd = 0, XrefRangeStart = 0, XrefRangeEnd = 0, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+			set
+			{
+				IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+				checked
+				{
+					IntPtr* ptr = stackalloc IntPtr[unchecked((UIntPtr)1) * (UIntPtr)sizeof(IntPtr)];
+					*ptr = IL2CPP.Il2CppObjectBaseToPtr(value);
+					IntPtr intPtr2;
+					IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(ItemSlot.NativeMethodInfoPtr_set_SiblingSet_Public_set_Void_ItemSlotSiblingSet_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)ptr, ref intPtr2);
+					Il2CppException.RaiseExceptionIfNecessary(intPtr2);
+				}
+			}
+		}
+
+		// Token: 0x0600ABAA RID: 43946 RVA: 0x002BE614 File Offset: 0x002BC814
+		[CallerCount(28)]
+		[CachedScanResults(RefRangeStart = 297686, RefRangeEnd = 297714, XrefRangeStart = 297676, XrefRangeEnd = 297686, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+		public unsafe void SetSlotOwner(IItemSlotOwner owner)
+		{
+			IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+			checked
+			{
+				IntPtr* ptr = stackalloc IntPtr[unchecked((UIntPtr)1) * (UIntPtr)sizeof(IntPtr)];
+				*ptr = IL2CPP.Il2CppObjectBaseToPtr(owner);
+				IntPtr intPtr2;
+				IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(ItemSlot.NativeMethodInfoPtr_SetSlotOwner_Public_Void_IItemSlotOwner_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)ptr, ref intPtr2);
+				Il2CppException.RaiseExceptionIfNecessary(intPtr2);
+			}
+		}
+
+		// Token: 0x0600ABAB RID: 43947 RVA: 0x002BE658 File Offset: 0x002BC858
+		[CallerCount(0)]
+		[CachedScanResults(RefRangeStart = 0, RefRangeEnd = 0, XrefRangeStart = 297714, XrefRangeEnd = 297721, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+		public unsafe void SetSiblingSet(ItemSlotSiblingSet set)
+		{
+			IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+			checked
+			{
+				IntPtr* ptr = stackalloc IntPtr[unchecked((UIntPtr)1) * (UIntPtr)sizeof(IntPtr)];
+				*ptr = IL2CPP.Il2CppObjectBaseToPtr(set);
+				IntPtr intPtr2;
+				IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(ItemSlot.NativeMethodInfoPtr_SetSiblingSet_Public_Void_ItemSlotSiblingSet_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)ptr, ref intPtr2);
+				Il2CppException.RaiseExceptionIfNecessary(intPtr2);
+			}
+		}
+
+		// Token: 0x0600ABAC RID: 43948 RVA: 0x002BE69C File Offset: 0x002BC89C
+		[CallerCount(17)]
+		[CachedScanResults(RefRangeStart = 297743, RefRangeEnd = 297760, XrefRangeStart = 297721, XrefRangeEnd = 297743, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+		public unsafe ItemSlot()
+			: this(IL2CPP.il2cpp_object_new(Il2CppClassPointerStore<ItemSlot>.NativeClassPtr))
+		{
+			IntPtr* ptr = null;
+			IntPtr intPtr2;
+			IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(ItemSlot.NativeMethodInfoPtr__ctor_Public_Void_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)ptr, ref intPtr2);
+			Il2CppException.RaiseExceptionIfNecessary(intPtr2);
+		}
+
+		// Token: 0x0600ABAD RID: 43949 RVA: 0x002BE6D8 File Offset: 0x002BC8D8
+		[CallerCount(12)]
+		[CachedScanResults(RefRangeStart = 297782, RefRangeEnd = 297794, XrefRangeStart = 297760, XrefRangeEnd = 297782, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+		public unsafe ItemSlot(bool canPlayerSetFilter = false)
+			: this(IL2CPP.il2cpp_object_new(Il2CppClassPointerStore<ItemSlot>.NativeClassPtr))
+		{
+			checked
+			{
+				IntPtr* ptr = stackalloc IntPtr[unchecked((UIntPtr)1) * (UIntPtr)sizeof(IntPtr)];
+				*ptr = ref canPlayerSetFilter;
+				IntPtr intPtr2;
+				IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(ItemSlot.NativeMethodInfoPtr__ctor_Public_Void_Boolean_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)ptr, ref intPtr2);
+				Il2CppException.RaiseExceptionIfNecessary(intPtr2);
+			}
+		}
+
+		// Token: 0x0600ABAE RID: 43950 RVA: 0x002BE720 File Offset: 0x002BC920
+		[CallerCount(6)]
+		[CachedScanResults(RefRangeStart = 297803, RefRangeEnd = 297809, XrefRangeStart = 297794, XrefRangeEnd = 297803, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+		public unsafe void ReplicateStoredInstance()
+		{
+			IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+			IntPtr* ptr = null;
+			IntPtr intPtr2;
+			IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(ItemSlot.NativeMethodInfoPtr_ReplicateStoredInstance_Public_Void_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)ptr, ref intPtr2);
+			Il2CppException.RaiseExceptionIfNecessary(intPtr2);
+		}
+
+		// Token: 0x0600ABAF RID: 43951 RVA: 0x002BE754 File Offset: 0x002BC954
+		[CallerCount(1)]
+		[CachedScanResults(RefRangeStart = 297848, RefRangeEnd = 297849, XrefRangeStart = 297809, XrefRangeEnd = 297848, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+		public unsafe virtual void SetStoredItem(ItemInstance instance, bool _internal = false)
+		{
+			IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+			IntPtr* ptr;
+			checked
+			{
+				ptr = stackalloc IntPtr[unchecked((UIntPtr)2) * (UIntPtr)sizeof(IntPtr)];
+				*ptr = IL2CPP.Il2CppObjectBaseToPtr(instance);
+			}
+			ptr[checked(unchecked((UIntPtr)1) * (UIntPtr)sizeof(IntPtr)) / (UIntPtr)sizeof(IntPtr)] = ref _internal;
+			IntPtr intPtr2;
+			IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(IL2CPP.il2cpp_object_get_virtual_method(IL2CPP.Il2CppObjectBaseToPtr(this), ItemSlot.NativeMethodInfoPtr_SetStoredItem_Public_Virtual_New_Void_ItemInstance_Boolean_0), IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)ptr, ref intPtr2);
+			Il2CppException.RaiseExceptionIfNecessary(intPtr2);
+		}
+
+		// Token: 0x0600ABB0 RID: 43952 RVA: 0x002BE7B0 File Offset: 0x002BC9B0
+		[CallerCount(0)]
+		public unsafe virtual void InsertItem(ItemInstance item)
+		{
+			IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+			checked
+			{
+				IntPtr* ptr = stackalloc IntPtr[unchecked((UIntPtr)1) * (UIntPtr)sizeof(IntPtr)];
+				*ptr = IL2CPP.Il2CppObjectBaseToPtr(item);
+				IntPtr intPtr2;
+				IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(IL2CPP.il2cpp_object_get_virtual_method(IL2CPP.Il2CppObjectBaseToPtr(this), ItemSlot.NativeMethodInfoPtr_InsertItem_Public_Virtual_New_Void_ItemInstance_0), IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)ptr, ref intPtr2);
+				Il2CppException.RaiseExceptionIfNecessary(intPtr2);
+			}
+		}
+
+		// Token: 0x0600ABB1 RID: 43953 RVA: 0x002BE800 File Offset: 0x002BCA00
+		[CallerCount(0)]
+		[CachedScanResults(RefRangeStart = 0, RefRangeEnd = 0, XrefRangeStart = 297849, XrefRangeEnd = 297857, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+		public unsafe virtual void AddItem(ItemInstance item, bool _internal = false)
+		{
+			IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+			IntPtr* ptr;
+			checked
+			{
+				ptr = stackalloc IntPtr[unchecked((UIntPtr)2) * (UIntPtr)sizeof(IntPtr)];
+				*ptr = IL2CPP.Il2CppObjectBaseToPtr(item);
+			}
+			ptr[checked(unchecked((UIntPtr)1) * (UIntPtr)sizeof(IntPtr)) / (UIntPtr)sizeof(IntPtr)] = ref _internal;
+			IntPtr intPtr2;
+			IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(IL2CPP.il2cpp_object_get_virtual_method(IL2CPP.Il2CppObjectBaseToPtr(this), ItemSlot.NativeMethodInfoPtr_AddItem_Public_Virtual_New_Void_ItemInstance_Boolean_0), IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)ptr, ref intPtr2);
+			Il2CppException.RaiseExceptionIfNecessary(intPtr2);
+		}
+
+		// Token: 0x0600ABB2 RID: 43954 RVA: 0x002BE85C File Offset: 0x002BCA5C
+		[CallerCount(1)]
+		[CachedScanResults(RefRangeStart = 297869, RefRangeEnd = 297870, XrefRangeStart = 297857, XrefRangeEnd = 297869, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+		public unsafe virtual void ClearStoredInstance(bool _internal = false)
+		{
+			IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+			checked
+			{
+				IntPtr* ptr = stackalloc IntPtr[unchecked((UIntPtr)1) * (UIntPtr)sizeof(IntPtr)];
+				*ptr = ref _internal;
+				IntPtr intPtr2;
+				IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(IL2CPP.il2cpp_object_get_virtual_method(IL2CPP.Il2CppObjectBaseToPtr(this), ItemSlot.NativeMethodInfoPtr_ClearStoredInstance_Public_Virtual_New_Void_Boolean_0), IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)ptr, ref intPtr2);
+				Il2CppException.RaiseExceptionIfNecessary(intPtr2);
+			}
+		}
+
+		// Token: 0x0600ABB3 RID: 43955 RVA: 0x002BE8A8 File Offset: 0x002BCAA8
+		[CallerCount(27)]
+		[CachedScanResults(RefRangeStart = 297892, RefRangeEnd = 297919, XrefRangeStart = 297870, XrefRangeEnd = 297892, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+		public unsafe void SetQuantity(int amount, bool _internal = false)
+		{
+			IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+			IntPtr* ptr;
+			checked
+			{
+				ptr = stackalloc IntPtr[unchecked((UIntPtr)2) * (UIntPtr)sizeof(IntPtr)];
+				*ptr = ref amount;
+			}
+			ptr[checked(unchecked((UIntPtr)1) * (UIntPtr)sizeof(IntPtr)) / (UIntPtr)sizeof(IntPtr)] = ref _internal;
+			IntPtr intPtr2;
+			IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(ItemSlot.NativeMethodInfoPtr_SetQuantity_Public_Void_Int32_Boolean_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)ptr, ref intPtr2);
+			Il2CppException.RaiseExceptionIfNecessary(intPtr2);
+		}
+
+		// Token: 0x0600ABB4 RID: 43956 RVA: 0x002BE8F4 File Offset: 0x002BCAF4
+		[CallerCount(46)]
+		[CachedScanResults(RefRangeStart = 297941, RefRangeEnd = 297987, XrefRangeStart = 297919, XrefRangeEnd = 297941, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+		public unsafe void ChangeQuantity(int change, bool _internal = false)
+		{
+			IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+			IntPtr* ptr;
+			checked
+			{
+				ptr = stackalloc IntPtr[unchecked((UIntPtr)2) * (UIntPtr)sizeof(IntPtr)];
+				*ptr = ref change;
+			}
+			ptr[checked(unchecked((UIntPtr)1) * (UIntPtr)sizeof(IntPtr)) / (UIntPtr)sizeof(IntPtr)] = ref _internal;
+			IntPtr intPtr2;
+			IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(ItemSlot.NativeMethodInfoPtr_ChangeQuantity_Public_Void_Int32_Boolean_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)ptr, ref intPtr2);
+			Il2CppException.RaiseExceptionIfNecessary(intPtr2);
+		}
+
+		// Token: 0x0600ABB5 RID: 43957 RVA: 0x002BE940 File Offset: 0x002BCB40
+		[CallerCount(0)]
+		public unsafe virtual void ItemDataChanged()
+		{
+			IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+			IntPtr* ptr = null;
+			IntPtr intPtr2;
+			IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(IL2CPP.il2cpp_object_get_virtual_method(IL2CPP.Il2CppObjectBaseToPtr(this), ItemSlot.NativeMethodInfoPtr_ItemDataChanged_Protected_Virtual_New_Void_0), IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)ptr, ref intPtr2);
+			Il2CppException.RaiseExceptionIfNecessary(intPtr2);
+		}
+
+		// Token: 0x0600ABB6 RID: 43958 RVA: 0x002BE97C File Offset: 0x002BCB7C
+		[CallerCount(3)]
+		[CachedScanResults(RefRangeStart = 291769, RefRangeEnd = 291772, XrefRangeStart = 291769, XrefRangeEnd = 291772, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+		public unsafe virtual void ClearItemInstanceRequested()
+		{
+			IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+			IntPtr* ptr = null;
+			IntPtr intPtr2;
+			IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(IL2CPP.il2cpp_object_get_virtual_method(IL2CPP.Il2CppObjectBaseToPtr(this), ItemSlot.NativeMethodInfoPtr_ClearItemInstanceRequested_Protected_Virtual_New_Void_0), IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)ptr, ref intPtr2);
+			Il2CppException.RaiseExceptionIfNecessary(intPtr2);
+		}
+
+		// Token: 0x0600ABB7 RID: 43959 RVA: 0x002BE9B8 File Offset: 0x002BCBB8
+		[CallerCount(20)]
+		[CachedScanResults(RefRangeStart = 298000, RefRangeEnd = 298020, XrefRangeStart = 297987, XrefRangeEnd = 298000, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+		public unsafe void AddFilter(ItemFilter filter)
+		{
+			IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+			checked
+			{
+				IntPtr* ptr = stackalloc IntPtr[unchecked((UIntPtr)1) * (UIntPtr)sizeof(IntPtr)];
+				*ptr = IL2CPP.Il2CppObjectBaseToPtr(filter);
+				IntPtr intPtr2;
+				IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(ItemSlot.NativeMethodInfoPtr_AddFilter_Public_Void_ItemFilter_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)ptr, ref intPtr2);
+				Il2CppException.RaiseExceptionIfNecessary(intPtr2);
+			}
+		}
+
+		// Token: 0x0600ABB8 RID: 43960 RVA: 0x002BE9FC File Offset: 0x002BCBFC
+		[CallerCount(14)]
+		[CachedScanResults(RefRangeStart = 298042, RefRangeEnd = 298056, XrefRangeStart = 298020, XrefRangeEnd = 298042, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+		public unsafe void ApplyLock(NetworkObject lockOwner, string lockReason, bool _internal = false)
+		{
+			IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+			IntPtr* ptr;
+			checked
+			{
+				ptr = stackalloc IntPtr[unchecked((UIntPtr)3) * (UIntPtr)sizeof(IntPtr)];
+				*ptr = IL2CPP.Il2CppObjectBaseToPtr(lockOwner);
+			}
+			ptr[checked(unchecked((UIntPtr)1) * (UIntPtr)sizeof(IntPtr)) / (UIntPtr)sizeof(IntPtr)] = IL2CPP.ManagedStringToIl2Cpp(lockReason);
+			ptr[checked(unchecked((UIntPtr)2) * (UIntPtr)sizeof(IntPtr)) / (UIntPtr)sizeof(IntPtr)] = ref _internal;
+			IntPtr intPtr2;
+			IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(ItemSlot.NativeMethodInfoPtr_ApplyLock_Public_Void_NetworkObject_String_Boolean_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)ptr, ref intPtr2);
+			Il2CppException.RaiseExceptionIfNecessary(intPtr2);
+		}
+
+		// Token: 0x0600ABB9 RID: 43961 RVA: 0x002BEA60 File Offset: 0x002BCC60
+		[CallerCount(14)]
+		[CachedScanResults(RefRangeStart = 298067, RefRangeEnd = 298081, XrefRangeStart = 298056, XrefRangeEnd = 298067, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+		public unsafe void RemoveLock(bool _internal = false)
+		{
+			IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+			checked
+			{
+				IntPtr* ptr = stackalloc IntPtr[unchecked((UIntPtr)1) * (UIntPtr)sizeof(IntPtr)];
+				*ptr = ref _internal;
+				IntPtr intPtr2;
+				IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(ItemSlot.NativeMethodInfoPtr_RemoveLock_Public_Void_Boolean_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)ptr, ref intPtr2);
+				Il2CppException.RaiseExceptionIfNecessary(intPtr2);
+			}
+		}
+
+		// Token: 0x0600ABBA RID: 43962 RVA: 0x002BEAA0 File Offset: 0x002BCCA0
+		[CallerCount(3)]
+		[CachedScanResults(RefRangeStart = 49534, RefRangeEnd = 49537, XrefRangeStart = 49534, XrefRangeEnd = 49537, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+		public unsafe void SetIsRemovalLocked(bool locked)
+		{
+			IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+			checked
+			{
+				IntPtr* ptr = stackalloc IntPtr[unchecked((UIntPtr)1) * (UIntPtr)sizeof(IntPtr)];
+				*ptr = ref locked;
+				IntPtr intPtr2;
+				IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(ItemSlot.NativeMethodInfoPtr_SetIsRemovalLocked_Public_Void_Boolean_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)ptr, ref intPtr2);
+				Il2CppException.RaiseExceptionIfNecessary(intPtr2);
+			}
+		}
+
+		// Token: 0x0600ABBB RID: 43963 RVA: 0x002BEAE0 File Offset: 0x002BCCE0
+		[CallerCount(11)]
+		[CachedScanResults(RefRangeStart = 49520, RefRangeEnd = 49531, XrefRangeStart = 49520, XrefRangeEnd = 49531, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+		public unsafe void SetIsAddLocked(bool locked)
+		{
+			IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+			checked
+			{
+				IntPtr* ptr = stackalloc IntPtr[unchecked((UIntPtr)1) * (UIntPtr)sizeof(IntPtr)];
+				*ptr = ref locked;
+				IntPtr intPtr2;
+				IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(ItemSlot.NativeMethodInfoPtr_SetIsAddLocked_Public_Void_Boolean_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)ptr, ref intPtr2);
+				Il2CppException.RaiseExceptionIfNecessary(intPtr2);
+			}
+		}
+
+		// Token: 0x0600ABBC RID: 43964 RVA: 0x002BEB20 File Offset: 0x002BCD20
+		[CallerCount(0)]
+		[CachedScanResults(RefRangeStart = 0, RefRangeEnd = 0, XrefRangeStart = 298081, XrefRangeEnd = 298092, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+		public unsafe virtual bool DoesItemMatchHardFilters(ItemInstance item)
+		{
+			IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+			checked
+			{
+				IntPtr* ptr = stackalloc IntPtr[unchecked((UIntPtr)1) * (UIntPtr)sizeof(IntPtr)];
+				*ptr = IL2CPP.Il2CppObjectBaseToPtr(item);
+				IntPtr intPtr2;
+				IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(IL2CPP.il2cpp_object_get_virtual_method(IL2CPP.Il2CppObjectBaseToPtr(this), ItemSlot.NativeMethodInfoPtr_DoesItemMatchHardFilters_Public_Virtual_New_Boolean_ItemInstance_0), IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)ptr, ref intPtr2);
+				Il2CppException.RaiseExceptionIfNecessary(intPtr2);
+				return *IL2CPP.il2cpp_object_unbox(intPtr);
+			}
+		}
+
+		// Token: 0x0600ABBD RID: 43965 RVA: 0x002BEB78 File Offset: 0x002BCD78
+		[CallerCount(0)]
+		[CachedScanResults(RefRangeStart = 0, RefRangeEnd = 0, XrefRangeStart = 298092, XrefRangeEnd = 298102, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+		public unsafe virtual bool DoesItemMatchPlayerFilters(ItemInstance item)
+		{
+			IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+			checked
+			{
+				IntPtr* ptr = stackalloc IntPtr[unchecked((UIntPtr)1) * (UIntPtr)sizeof(IntPtr)];
+				*ptr = IL2CPP.Il2CppObjectBaseToPtr(item);
+				IntPtr intPtr2;
+				IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(IL2CPP.il2cpp_object_get_virtual_method(IL2CPP.Il2CppObjectBaseToPtr(this), ItemSlot.NativeMethodInfoPtr_DoesItemMatchPlayerFilters_Public_Virtual_New_Boolean_ItemInstance_0), IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)ptr, ref intPtr2);
+				Il2CppException.RaiseExceptionIfNecessary(intPtr2);
+				return *IL2CPP.il2cpp_object_unbox(intPtr);
+			}
+		}
+
+		// Token: 0x0600ABBE RID: 43966 RVA: 0x002BEBD0 File Offset: 0x002BCDD0
+		[CallerCount(1)]
+		[CachedScanResults(RefRangeStart = 298107, RefRangeEnd = 298108, XrefRangeStart = 298102, XrefRangeEnd = 298107, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+		public unsafe void SetFilterable(bool filterable)
+		{
+			IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+			checked
+			{
+				IntPtr* ptr = stackalloc IntPtr[unchecked((UIntPtr)1) * (UIntPtr)sizeof(IntPtr)];
+				*ptr = ref filterable;
+				IntPtr intPtr2;
+				IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(ItemSlot.NativeMethodInfoPtr_SetFilterable_Public_Void_Boolean_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)ptr, ref intPtr2);
+				Il2CppException.RaiseExceptionIfNecessary(intPtr2);
+			}
+		}
+
+		// Token: 0x0600ABBF RID: 43967 RVA: 0x002BEC10 File Offset: 0x002BCE10
+		[CallerCount(44)]
+		[CachedScanResults(RefRangeStart = 298117, RefRangeEnd = 298161, XrefRangeStart = 298108, XrefRangeEnd = 298117, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+		public unsafe void SetPlayerFilter(SlotFilter filter, bool _internal = false)
+		{
+			IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+			IntPtr* ptr;
+			checked
+			{
+				ptr = stackalloc IntPtr[unchecked((UIntPtr)2) * (UIntPtr)sizeof(IntPtr)];
+				*ptr = IL2CPP.Il2CppObjectBaseToPtr(filter);
+			}
+			ptr[checked(unchecked((UIntPtr)1) * (UIntPtr)sizeof(IntPtr)) / (UIntPtr)sizeof(IntPtr)] = ref _internal;
+			IntPtr intPtr2;
+			IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(ItemSlot.NativeMethodInfoPtr_SetPlayerFilter_Public_Void_SlotFilter_Boolean_0, IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)ptr, ref intPtr2);
+			Il2CppException.RaiseExceptionIfNecessary(intPtr2);
+		}
+
+		// Token: 0x0600ABC0 RID: 43968 RVA: 0x002BEC60 File Offset: 0x002BCE60
+		[CallerCount(0)]
+		public unsafe virtual int GetCapacityForItem(ItemInstance item, bool checkPlayerFilters = false)
+		{
+			IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+			IntPtr* ptr;
+			checked
+			{
+				ptr = stackalloc IntPtr[unchecked((UIntPtr)2) * (UIntPtr)sizeof(IntPtr)];
+				*ptr = IL2CPP.Il2CppObjectBaseToPtr(item);
+			}
+			ptr[checked(unchecked((UIntPtr)1) * (UIntPtr)sizeof(IntPtr)) / (UIntPtr)sizeof(IntPtr)] = ref checkPlayerFilters;
+			IntPtr intPtr2;
+			IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(IL2CPP.il2cpp_object_get_virtual_method(IL2CPP.Il2CppObjectBaseToPtr(this), ItemSlot.NativeMethodInfoPtr_GetCapacityForItem_Public_Virtual_New_Int32_ItemInstance_Boolean_0), IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)ptr, ref intPtr2);
+			Il2CppException.RaiseExceptionIfNecessary(intPtr2);
+			return *IL2CPP.il2cpp_object_unbox(intPtr);
+		}
+
+		// Token: 0x0600ABC1 RID: 43969 RVA: 0x002BECC8 File Offset: 0x002BCEC8
+		[CallerCount(17)]
+		[CachedScanResults(RefRangeStart = 31815, RefRangeEnd = 31832, XrefRangeStart = 31815, XrefRangeEnd = 31832, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+		public unsafe virtual bool CanSlotAcceptCash()
+		{
+			IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+			IntPtr* ptr = null;
+			IntPtr intPtr2;
+			IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(IL2CPP.il2cpp_object_get_virtual_method(IL2CPP.Il2CppObjectBaseToPtr(this), ItemSlot.NativeMethodInfoPtr_CanSlotAcceptCash_Public_Virtual_New_Boolean_0), IL2CPP.Il2CppObjectBaseToPtrNotNull(this), (void**)ptr, ref intPtr2);
+			Il2CppException.RaiseExceptionIfNecessary(intPtr2);
+			return *IL2CPP.il2cpp_object_unbox(intPtr);
+		}
+
+		// Token: 0x0600ABC2 RID: 43970 RVA: 0x002BED10 File Offset: 0x002BCF10
+		[CallerCount(1)]
+		[CachedScanResults(RefRangeStart = 298186, RefRangeEnd = 298187, XrefRangeStart = 298161, XrefRangeEnd = 298186, MetadataInitTokenRva = 0L, MetadataInitFlagRva = 0L)]
+		public unsafe static bool TryInsertItemIntoSet(List<ItemSlot> ItemSlots, ItemInstance item)
+		{
+			IntPtr* ptr;
+			checked
+			{
+				ptr = stackalloc IntPtr[unchecked((UIntPtr)2) * (UIntPtr)sizeof(IntPtr)];
+				*ptr = IL2CPP.Il2CppObjectBaseToPtr(ItemSlots);
+			}
+			ptr[checked(unchecked((UIntPtr)1) * (UIntPtr)sizeof(IntPtr)) / (UIntPtr)sizeof(IntPtr)] = IL2CPP.Il2CppObjectBaseToPtr(item);
+			IntPtr intPtr2;
+			IntPtr intPtr = IL2CPP.il2cpp_runtime_invoke(ItemSlot.NativeMethodInfoPtr_TryInsertItemIntoSet_Public_Static_Boolean_List_1_ItemSlot_ItemInstance_0, 0, (void**)ptr, ref intPtr2);
+			Il2CppException.RaiseExceptionIfNecessary(intPtr2);
+			return *IL2CPP.il2cpp_object_unbox(intPtr);
+		}
+
+		// Token: 0x0600ABC3 RID: 43971 RVA: 0x000517FC File Offset: 0x0004F9FC
+		public ItemSlot(IntPtr pointer)
+			: base(pointer)
+		{
+		}
+
+		// Token: 0x17003403 RID: 13315
+		// (get) Token: 0x0600ABC4 RID: 43972 RVA: 0x002BED64 File Offset: 0x002BCF64
+		// (set) Token: 0x0600ABC5 RID: 43973 RVA: 0x00051805 File Offset: 0x0004FA05
+		public unsafe ItemInstance _ItemInstance_k__BackingField
+		{
+			get
+			{
+				IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this) + (IntPtr)IL2CPP.il2cpp_field_get_offset(ItemSlot.NativeFieldInfoPtr__ItemInstance_k__BackingField);
+				IntPtr intPtr2 = *intPtr;
+				return (intPtr2 != 0) ? Il2CppObjectPool.Get<ItemInstance>(intPtr2) : null;
+			}
+			set
+			{
+				IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+				IL2CPP.il2cpp_gc_wbarrier_set_field(intPtr, intPtr + (IntPtr)IL2CPP.il2cpp_field_get_offset(ItemSlot.NativeFieldInfoPtr__ItemInstance_k__BackingField), IL2CPP.Il2CppObjectBaseToPtr(value));
+			}
+		}
+
+		// Token: 0x17003404 RID: 13316
+		// (get) Token: 0x0600ABC6 RID: 43974 RVA: 0x002BED94 File Offset: 0x002BCF94
+		// (set) Token: 0x0600ABC7 RID: 43975 RVA: 0x00051824 File Offset: 0x0004FA24
+		public unsafe IItemSlotOwner _SlotOwner_k__BackingField
+		{
+			get
+			{
+				IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this) + (IntPtr)IL2CPP.il2cpp_field_get_offset(ItemSlot.NativeFieldInfoPtr__SlotOwner_k__BackingField);
+				IntPtr intPtr2 = *intPtr;
+				return (intPtr2 != 0) ? Il2CppObjectPool.Get<IItemSlotOwner>(intPtr2) : null;
+			}
+			set
+			{
+				IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+				IL2CPP.il2cpp_gc_wbarrier_set_field(intPtr, intPtr + (IntPtr)IL2CPP.il2cpp_field_get_offset(ItemSlot.NativeFieldInfoPtr__SlotOwner_k__BackingField), IL2CPP.Il2CppObjectBaseToPtr(value));
+			}
+		}
+
+		// Token: 0x17003405 RID: 13317
+		// (get) Token: 0x0600ABC8 RID: 43976 RVA: 0x002BEDC4 File Offset: 0x002BCFC4
+		// (set) Token: 0x0600ABC9 RID: 43977 RVA: 0x00051843 File Offset: 0x0004FA43
+		public unsafe Action onItemDataChanged
+		{
+			get
+			{
+				IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this) + (IntPtr)IL2CPP.il2cpp_field_get_offset(ItemSlot.NativeFieldInfoPtr_onItemDataChanged);
+				IntPtr intPtr2 = *intPtr;
+				return (intPtr2 != 0) ? Il2CppObjectPool.Get<Action>(intPtr2) : null;
+			}
+			set
+			{
+				IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+				IL2CPP.il2cpp_gc_wbarrier_set_field(intPtr, intPtr + (IntPtr)IL2CPP.il2cpp_field_get_offset(ItemSlot.NativeFieldInfoPtr_onItemDataChanged), IL2CPP.Il2CppObjectBaseToPtr(value));
+			}
+		}
+
+		// Token: 0x17003406 RID: 13318
+		// (get) Token: 0x0600ABCA RID: 43978 RVA: 0x002BEDF4 File Offset: 0x002BCFF4
+		// (set) Token: 0x0600ABCB RID: 43979 RVA: 0x00051862 File Offset: 0x0004FA62
+		public unsafe Action onItemInstanceChanged
+		{
+			get
+			{
+				IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this) + (IntPtr)IL2CPP.il2cpp_field_get_offset(ItemSlot.NativeFieldInfoPtr_onItemInstanceChanged);
+				IntPtr intPtr2 = *intPtr;
+				return (intPtr2 != 0) ? Il2CppObjectPool.Get<Action>(intPtr2) : null;
+			}
+			set
+			{
+				IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+				IL2CPP.il2cpp_gc_wbarrier_set_field(intPtr, intPtr + (IntPtr)IL2CPP.il2cpp_field_get_offset(ItemSlot.NativeFieldInfoPtr_onItemInstanceChanged), IL2CPP.Il2CppObjectBaseToPtr(value));
+			}
+		}
+
+		// Token: 0x17003407 RID: 13319
+		// (get) Token: 0x0600ABCC RID: 43980 RVA: 0x002BEE24 File Offset: 0x002BD024
+		// (set) Token: 0x0600ABCD RID: 43981 RVA: 0x00051881 File Offset: 0x0004FA81
+		public unsafe ItemSlotLock _ActiveLock_k__BackingField
+		{
+			get
+			{
+				IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this) + (IntPtr)IL2CPP.il2cpp_field_get_offset(ItemSlot.NativeFieldInfoPtr__ActiveLock_k__BackingField);
+				IntPtr intPtr2 = *intPtr;
+				return (intPtr2 != 0) ? Il2CppObjectPool.Get<ItemSlotLock>(intPtr2) : null;
+			}
+			set
+			{
+				IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+				IL2CPP.il2cpp_gc_wbarrier_set_field(intPtr, intPtr + (IntPtr)IL2CPP.il2cpp_field_get_offset(ItemSlot.NativeFieldInfoPtr__ActiveLock_k__BackingField), IL2CPP.Il2CppObjectBaseToPtr(value));
+			}
+		}
+
+		// Token: 0x17003408 RID: 13320
+		// (get) Token: 0x0600ABCE RID: 43982 RVA: 0x002BEE54 File Offset: 0x002BD054
+		// (set) Token: 0x0600ABCF RID: 43983 RVA: 0x000518A0 File Offset: 0x0004FAA0
+		public unsafe Action onLocked
+		{
+			get
+			{
+				IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this) + (IntPtr)IL2CPP.il2cpp_field_get_offset(ItemSlot.NativeFieldInfoPtr_onLocked);
+				IntPtr intPtr2 = *intPtr;
+				return (intPtr2 != 0) ? Il2CppObjectPool.Get<Action>(intPtr2) : null;
+			}
+			set
+			{
+				IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+				IL2CPP.il2cpp_gc_wbarrier_set_field(intPtr, intPtr + (IntPtr)IL2CPP.il2cpp_field_get_offset(ItemSlot.NativeFieldInfoPtr_onLocked), IL2CPP.Il2CppObjectBaseToPtr(value));
+			}
+		}
+
+		// Token: 0x17003409 RID: 13321
+		// (get) Token: 0x0600ABD0 RID: 43984 RVA: 0x002BEE84 File Offset: 0x002BD084
+		// (set) Token: 0x0600ABD1 RID: 43985 RVA: 0x000518BF File Offset: 0x0004FABF
+		public unsafe Action onUnlocked
+		{
+			get
+			{
+				IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this) + (IntPtr)IL2CPP.il2cpp_field_get_offset(ItemSlot.NativeFieldInfoPtr_onUnlocked);
+				IntPtr intPtr2 = *intPtr;
+				return (intPtr2 != 0) ? Il2CppObjectPool.Get<Action>(intPtr2) : null;
+			}
+			set
+			{
+				IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+				IL2CPP.il2cpp_gc_wbarrier_set_field(intPtr, intPtr + (IntPtr)IL2CPP.il2cpp_field_get_offset(ItemSlot.NativeFieldInfoPtr_onUnlocked), IL2CPP.Il2CppObjectBaseToPtr(value));
+			}
+		}
+
+		// Token: 0x1700340A RID: 13322
+		// (get) Token: 0x0600ABD2 RID: 43986 RVA: 0x002BEEB4 File Offset: 0x002BD0B4
+		// (set) Token: 0x0600ABD3 RID: 43987 RVA: 0x000518DE File Offset: 0x0004FADE
+		public unsafe bool _IsRemovalLocked_k__BackingField
+		{
+			get
+			{
+				IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this) + (IntPtr)IL2CPP.il2cpp_field_get_offset(ItemSlot.NativeFieldInfoPtr__IsRemovalLocked_k__BackingField);
+				return *intPtr;
+			}
+			set
+			{
+				*(IL2CPP.Il2CppObjectBaseToPtrNotNull(this) + (IntPtr)IL2CPP.il2cpp_field_get_offset(ItemSlot.NativeFieldInfoPtr__IsRemovalLocked_k__BackingField)) = value;
+			}
+		}
+
+		// Token: 0x1700340B RID: 13323
+		// (get) Token: 0x0600ABD4 RID: 43988 RVA: 0x002BEEDC File Offset: 0x002BD0DC
+		// (set) Token: 0x0600ABD5 RID: 43989 RVA: 0x000518F9 File Offset: 0x0004FAF9
+		public unsafe bool _IsAddLocked_k__BackingField
+		{
+			get
+			{
+				IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this) + (IntPtr)IL2CPP.il2cpp_field_get_offset(ItemSlot.NativeFieldInfoPtr__IsAddLocked_k__BackingField);
+				return *intPtr;
+			}
+			set
+			{
+				*(IL2CPP.Il2CppObjectBaseToPtrNotNull(this) + (IntPtr)IL2CPP.il2cpp_field_get_offset(ItemSlot.NativeFieldInfoPtr__IsAddLocked_k__BackingField)) = value;
+			}
+		}
+
+		// Token: 0x1700340C RID: 13324
+		// (get) Token: 0x0600ABD6 RID: 43990 RVA: 0x002BEF04 File Offset: 0x002BD104
+		// (set) Token: 0x0600ABD7 RID: 43991 RVA: 0x00051914 File Offset: 0x0004FB14
+		public unsafe List<ItemFilter> _HardFilters_k__BackingField
+		{
+			get
+			{
+				IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this) + (IntPtr)IL2CPP.il2cpp_field_get_offset(ItemSlot.NativeFieldInfoPtr__HardFilters_k__BackingField);
+				IntPtr intPtr2 = *intPtr;
+				return (intPtr2 != 0) ? Il2CppObjectPool.Get<List<ItemFilter>>(intPtr2) : null;
+			}
+			set
+			{
+				IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+				IL2CPP.il2cpp_gc_wbarrier_set_field(intPtr, intPtr + (IntPtr)IL2CPP.il2cpp_field_get_offset(ItemSlot.NativeFieldInfoPtr__HardFilters_k__BackingField), IL2CPP.Il2CppObjectBaseToPtr(value));
+			}
+		}
+
+		// Token: 0x1700340D RID: 13325
+		// (get) Token: 0x0600ABD8 RID: 43992 RVA: 0x002BEF34 File Offset: 0x002BD134
+		// (set) Token: 0x0600ABD9 RID: 43993 RVA: 0x00051933 File Offset: 0x0004FB33
+		public unsafe bool _CanPlayerSetFilter_k__BackingField
+		{
+			get
+			{
+				IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this) + (IntPtr)IL2CPP.il2cpp_field_get_offset(ItemSlot.NativeFieldInfoPtr__CanPlayerSetFilter_k__BackingField);
+				return *intPtr;
+			}
+			set
+			{
+				*(IL2CPP.Il2CppObjectBaseToPtrNotNull(this) + (IntPtr)IL2CPP.il2cpp_field_get_offset(ItemSlot.NativeFieldInfoPtr__CanPlayerSetFilter_k__BackingField)) = value;
+			}
+		}
+
+		// Token: 0x1700340E RID: 13326
+		// (get) Token: 0x0600ABDA RID: 43994 RVA: 0x002BEF5C File Offset: 0x002BD15C
+		// (set) Token: 0x0600ABDB RID: 43995 RVA: 0x0005194E File Offset: 0x0004FB4E
+		public unsafe SlotFilter _PlayerFilter_k__BackingField
+		{
+			get
+			{
+				IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this) + (IntPtr)IL2CPP.il2cpp_field_get_offset(ItemSlot.NativeFieldInfoPtr__PlayerFilter_k__BackingField);
+				IntPtr intPtr2 = *intPtr;
+				return (intPtr2 != 0) ? Il2CppObjectPool.Get<SlotFilter>(intPtr2) : null;
+			}
+			set
+			{
+				IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+				IL2CPP.il2cpp_gc_wbarrier_set_field(intPtr, intPtr + (IntPtr)IL2CPP.il2cpp_field_get_offset(ItemSlot.NativeFieldInfoPtr__PlayerFilter_k__BackingField), IL2CPP.Il2CppObjectBaseToPtr(value));
+			}
+		}
+
+		// Token: 0x1700340F RID: 13327
+		// (get) Token: 0x0600ABDC RID: 43996 RVA: 0x002BEF8C File Offset: 0x002BD18C
+		// (set) Token: 0x0600ABDD RID: 43997 RVA: 0x0005196D File Offset: 0x0004FB6D
+		public unsafe Action onFilterChange
+		{
+			get
+			{
+				IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this) + (IntPtr)IL2CPP.il2cpp_field_get_offset(ItemSlot.NativeFieldInfoPtr_onFilterChange);
+				IntPtr intPtr2 = *intPtr;
+				return (intPtr2 != 0) ? Il2CppObjectPool.Get<Action>(intPtr2) : null;
+			}
+			set
+			{
+				IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+				IL2CPP.il2cpp_gc_wbarrier_set_field(intPtr, intPtr + (IntPtr)IL2CPP.il2cpp_field_get_offset(ItemSlot.NativeFieldInfoPtr_onFilterChange), IL2CPP.Il2CppObjectBaseToPtr(value));
+			}
+		}
+
+		// Token: 0x17003410 RID: 13328
+		// (get) Token: 0x0600ABDE RID: 43998 RVA: 0x002BEFBC File Offset: 0x002BD1BC
+		// (set) Token: 0x0600ABDF RID: 43999 RVA: 0x0005198C File Offset: 0x0004FB8C
+		public unsafe ItemSlotSiblingSet _SiblingSet_k__BackingField
+		{
+			get
+			{
+				IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this) + (IntPtr)IL2CPP.il2cpp_field_get_offset(ItemSlot.NativeFieldInfoPtr__SiblingSet_k__BackingField);
+				IntPtr intPtr2 = *intPtr;
+				return (intPtr2 != 0) ? Il2CppObjectPool.Get<ItemSlotSiblingSet>(intPtr2) : null;
+			}
+			set
+			{
+				IntPtr intPtr = IL2CPP.Il2CppObjectBaseToPtrNotNull(this);
+				IL2CPP.il2cpp_gc_wbarrier_set_field(intPtr, intPtr + (IntPtr)IL2CPP.il2cpp_field_get_offset(ItemSlot.NativeFieldInfoPtr__SiblingSet_k__BackingField), IL2CPP.Il2CppObjectBaseToPtr(value));
+			}
+		}
+
+		// Token: 0x04007433 RID: 29747
+		private static readonly IntPtr NativeFieldInfoPtr__ItemInstance_k__BackingField;
+
+		// Token: 0x04007434 RID: 29748
+		private static readonly IntPtr NativeFieldInfoPtr__SlotOwner_k__BackingField;
+
+		// Token: 0x04007435 RID: 29749
+		private static readonly IntPtr NativeFieldInfoPtr_onItemDataChanged;
+
+		// Token: 0x04007436 RID: 29750
+		private static readonly IntPtr NativeFieldInfoPtr_onItemInstanceChanged;
+
+		// Token: 0x04007437 RID: 29751
+		private static readonly IntPtr NativeFieldInfoPtr__ActiveLock_k__BackingField;
+
+		// Token: 0x04007438 RID: 29752
+		private static readonly IntPtr NativeFieldInfoPtr_onLocked;
+
+		// Token: 0x04007439 RID: 29753
+		private static readonly IntPtr NativeFieldInfoPtr_onUnlocked;
+
+		// Token: 0x0400743A RID: 29754
+		private static readonly IntPtr NativeFieldInfoPtr__IsRemovalLocked_k__BackingField;
+
+		// Token: 0x0400743B RID: 29755
+		private static readonly IntPtr NativeFieldInfoPtr__IsAddLocked_k__BackingField;
+
+		// Token: 0x0400743C RID: 29756
+		private static readonly IntPtr NativeFieldInfoPtr__HardFilters_k__BackingField;
+
+		// Token: 0x0400743D RID: 29757
+		private static readonly IntPtr NativeFieldInfoPtr__CanPlayerSetFilter_k__BackingField;
+
+		// Token: 0x0400743E RID: 29758
+		private static readonly IntPtr NativeFieldInfoPtr__PlayerFilter_k__BackingField;
+
+		// Token: 0x0400743F RID: 29759
+		private static readonly IntPtr NativeFieldInfoPtr_onFilterChange;
+
+		// Token: 0x04007440 RID: 29760
+		private static readonly IntPtr NativeFieldInfoPtr__SiblingSet_k__BackingField;
+
+		// Token: 0x04007441 RID: 29761
+		private static readonly IntPtr NativeMethodInfoPtr_get_ItemInstance_Public_get_ItemInstance_0;
+
+		// Token: 0x04007442 RID: 29762
+		private static readonly IntPtr NativeMethodInfoPtr_set_ItemInstance_Protected_set_Void_ItemInstance_0;
+
+		// Token: 0x04007443 RID: 29763
+		private static readonly IntPtr NativeMethodInfoPtr_get_SlotOwner_Public_get_IItemSlotOwner_0;
+
+		// Token: 0x04007444 RID: 29764
+		private static readonly IntPtr NativeMethodInfoPtr_set_SlotOwner_Protected_set_Void_IItemSlotOwner_0;
+
+		// Token: 0x04007445 RID: 29765
+		private static readonly IntPtr NativeMethodInfoPtr_get_SlotIndex_Private_get_Int32_0;
+
+		// Token: 0x04007446 RID: 29766
+		private static readonly IntPtr NativeMethodInfoPtr_get_Quantity_Public_get_Int32_0;
+
+		// Token: 0x04007447 RID: 29767
+		private static readonly IntPtr NativeMethodInfoPtr_get_IsAtCapacity_Public_get_Boolean_0;
+
+		// Token: 0x04007448 RID: 29768
+		private static readonly IntPtr NativeMethodInfoPtr_get_IsLocked_Public_get_Boolean_0;
+
+		// Token: 0x04007449 RID: 29769
+		private static readonly IntPtr NativeMethodInfoPtr_get_ActiveLock_Public_get_ItemSlotLock_0;
+
+		// Token: 0x0400744A RID: 29770
+		private static readonly IntPtr NativeMethodInfoPtr_set_ActiveLock_Protected_set_Void_ItemSlotLock_0;
+
+		// Token: 0x0400744B RID: 29771
+		private static readonly IntPtr NativeMethodInfoPtr_get_IsRemovalLocked_Public_get_Boolean_0;
+
+		// Token: 0x0400744C RID: 29772
+		private static readonly IntPtr NativeMethodInfoPtr_set_IsRemovalLocked_Protected_set_Void_Boolean_0;
+
+		// Token: 0x0400744D RID: 29773
+		private static readonly IntPtr NativeMethodInfoPtr_get_IsAddLocked_Public_get_Boolean_0;
+
+		// Token: 0x0400744E RID: 29774
+		private static readonly IntPtr NativeMethodInfoPtr_set_IsAddLocked_Protected_set_Void_Boolean_0;
+
+		// Token: 0x0400744F RID: 29775
+		private static readonly IntPtr NativeMethodInfoPtr_get_HardFilters_Protected_get_List_1_ItemFilter_0;
+
+		// Token: 0x04007450 RID: 29776
+		private static readonly IntPtr NativeMethodInfoPtr_set_HardFilters_Protected_set_Void_List_1_ItemFilter_0;
+
+		// Token: 0x04007451 RID: 29777
+		private static readonly IntPtr NativeMethodInfoPtr_get_CanPlayerSetFilter_Public_get_Boolean_0;
+
+		// Token: 0x04007452 RID: 29778
+		private static readonly IntPtr NativeMethodInfoPtr_set_CanPlayerSetFilter_Public_set_Void_Boolean_0;
+
+		// Token: 0x04007453 RID: 29779
+		private static readonly IntPtr NativeMethodInfoPtr_get_PlayerFilter_Public_get_SlotFilter_0;
+
+		// Token: 0x04007454 RID: 29780
+		private static readonly IntPtr NativeMethodInfoPtr_set_PlayerFilter_Public_set_Void_SlotFilter_0;
+
+		// Token: 0x04007455 RID: 29781
+		private static readonly IntPtr NativeMethodInfoPtr_get_SiblingSet_Public_get_ItemSlotSiblingSet_0;
+
+		// Token: 0x04007456 RID: 29782
+		private static readonly IntPtr NativeMethodInfoPtr_set_SiblingSet_Public_set_Void_ItemSlotSiblingSet_0;
+
+		// Token: 0x04007457 RID: 29783
+		private static readonly IntPtr NativeMethodInfoPtr_SetSlotOwner_Public_Void_IItemSlotOwner_0;
+
+		// Token: 0x04007458 RID: 29784
+		private static readonly IntPtr NativeMethodInfoPtr_SetSiblingSet_Public_Void_ItemSlotSiblingSet_0;
+
+		// Token: 0x04007459 RID: 29785
+		private static readonly IntPtr NativeMethodInfoPtr__ctor_Public_Void_0;
+
+		// Token: 0x0400745A RID: 29786
+		private static readonly IntPtr NativeMethodInfoPtr__ctor_Public_Void_Boolean_0;
+
+		// Token: 0x0400745B RID: 29787
+		private static readonly IntPtr NativeMethodInfoPtr_ReplicateStoredInstance_Public_Void_0;
+
+		// Token: 0x0400745C RID: 29788
+		private static readonly IntPtr NativeMethodInfoPtr_SetStoredItem_Public_Virtual_New_Void_ItemInstance_Boolean_0;
+
+		// Token: 0x0400745D RID: 29789
+		private static readonly IntPtr NativeMethodInfoPtr_InsertItem_Public_Virtual_New_Void_ItemInstance_0;
+
+		// Token: 0x0400745E RID: 29790
+		private static readonly IntPtr NativeMethodInfoPtr_AddItem_Public_Virtual_New_Void_ItemInstance_Boolean_0;
+
+		// Token: 0x0400745F RID: 29791
+		private static readonly IntPtr NativeMethodInfoPtr_ClearStoredInstance_Public_Virtual_New_Void_Boolean_0;
+
+		// Token: 0x04007460 RID: 29792
+		private static readonly IntPtr NativeMethodInfoPtr_SetQuantity_Public_Void_Int32_Boolean_0;
+
+		// Token: 0x04007461 RID: 29793
+		private static readonly IntPtr NativeMethodInfoPtr_ChangeQuantity_Public_Void_Int32_Boolean_0;
+
+		// Token: 0x04007462 RID: 29794
+		private static readonly IntPtr NativeMethodInfoPtr_ItemDataChanged_Protected_Virtual_New_Void_0;
+
+		// Token: 0x04007463 RID: 29795
+		private static readonly IntPtr NativeMethodInfoPtr_ClearItemInstanceRequested_Protected_Virtual_New_Void_0;
+
+		// Token: 0x04007464 RID: 29796
+		private static readonly IntPtr NativeMethodInfoPtr_AddFilter_Public_Void_ItemFilter_0;
+
+		// Token: 0x04007465 RID: 29797
+		private static readonly IntPtr NativeMethodInfoPtr_ApplyLock_Public_Void_NetworkObject_String_Boolean_0;
+
+		// Token: 0x04007466 RID: 29798
+		private static readonly IntPtr NativeMethodInfoPtr_RemoveLock_Public_Void_Boolean_0;
+
+		// Token: 0x04007467 RID: 29799
+		private static readonly IntPtr NativeMethodInfoPtr_SetIsRemovalLocked_Public_Void_Boolean_0;
+
+		// Token: 0x04007468 RID: 29800
+		private static readonly IntPtr NativeMethodInfoPtr_SetIsAddLocked_Public_Void_Boolean_0;
+
+		// Token: 0x04007469 RID: 29801
+		private static readonly IntPtr NativeMethodInfoPtr_DoesItemMatchHardFilters_Public_Virtual_New_Boolean_ItemInstance_0;
+
+		// Token: 0x0400746A RID: 29802
+		private static readonly IntPtr NativeMethodInfoPtr_DoesItemMatchPlayerFilters_Public_Virtual_New_Boolean_ItemInstance_0;
+
+		// Token: 0x0400746B RID: 29803
+		private static readonly IntPtr NativeMethodInfoPtr_SetFilterable_Public_Void_Boolean_0;
+
+		// Token: 0x0400746C RID: 29804
+		private static readonly IntPtr NativeMethodInfoPtr_SetPlayerFilter_Public_Void_SlotFilter_Boolean_0;
+
+		// Token: 0x0400746D RID: 29805
+		private static readonly IntPtr NativeMethodInfoPtr_GetCapacityForItem_Public_Virtual_New_Int32_ItemInstance_Boolean_0;
+
+		// Token: 0x0400746E RID: 29806
+		private static readonly IntPtr NativeMethodInfoPtr_CanSlotAcceptCash_Public_Virtual_New_Boolean_0;
+
+		// Token: 0x0400746F RID: 29807
+		private static readonly IntPtr NativeMethodInfoPtr_TryInsertItemIntoSet_Public_Static_Boolean_List_1_ItemSlot_ItemInstance_0;
+	}
+}
