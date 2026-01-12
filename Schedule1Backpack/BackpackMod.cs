@@ -43,7 +43,7 @@ namespace Schedule1Backpack
         private const int MAX_BACKPACKS_TO_PREGENERATE = 50;
 
         private bool isInitialized = false;
-        private static Grid targetGrid = null;
+        private static Grid targetGrid = null!;
 
         // ==============================================================================
         // PERSISTENCE HELPER (Sidecar Database)
@@ -228,7 +228,7 @@ namespace Schedule1Backpack
 
         private IEnumerator WaitForPlayerAndAssign(NetworkConnection conn)
         {
-            Player targetPlayer = null;
+            Player targetPlayer = null!;
             float timeWaited = 0f;
 
             // Wait for PlayerCode sync (SteamID)
@@ -268,7 +268,7 @@ namespace Schedule1Backpack
 
             string targetGO_Name = $"{BACKPACK_PREFIX}{persistentID}";
 
-            GameObject existingBackpack = null;
+            GameObject existingBackpack = null!;
 
             // 2. ATTEMPT RECOVERY FROM GRID (The Fix for Server Restart)
             // Instead of finding by name (which resets to Clone) or Y-pos (which resets to 0),
@@ -334,7 +334,7 @@ namespace Schedule1Backpack
         private void SpawnNewBackpack(NetworkConnection conn, string backpackName, int tileX, int tileY)
         {
             // --- 1. Find Template ---
-            GameObject template = null;
+            GameObject template = null!;
             var validRacks = Object.FindObjectsOfType<PlaceableStorageEntity>();
             foreach (var rack in validRacks)
             {
@@ -356,7 +356,7 @@ namespace Schedule1Backpack
             if (validGrid == null) return;
 
             // --- 3. Item Definition ---
-            BuildableItemDefinition storageItemDef = null;
+            BuildableItemDefinition storageItemDef = null!;
             var allDefs = Resources.FindObjectsOfTypeAll<BuildableItemDefinition>();
             foreach (var def in allDefs)
             {
